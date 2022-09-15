@@ -353,8 +353,9 @@
 "Assets/Hero Knight - Pixel Art/Demo/DestroyEvent_HeroKnight.cs"
 "Assets/Hero Knight - Pixel Art/Demo/HeroKnight.cs"
 "Assets/Hero Knight - Pixel Art/Demo/Sensor_HeroKnight.cs"
-"Assets/Scripts/Player_Controller.cs"
-"Assets/Scripts/Player_Sensor.cs"
+"Assets/Scripts/Objects/Scarecrow_Shake.cs"
+"Assets/Scripts/Player/Player_Controller.cs"
+"Assets/Scripts/Player/Player_Sensor.cs"
 -langversion:9.0
 
 /deterministic
