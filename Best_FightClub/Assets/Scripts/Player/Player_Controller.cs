@@ -24,12 +24,18 @@ public class Player_Controller : MonoBehaviour
     private float m_timeSinceAttack = 0.0f; // 연속 공격의 딜레이를 주기위한 타이머
     private float m_delayToIdle = 0.0f; // 달리기 동작에서 기본자세로 가는 0.05초의 지연시간(애니메이션이 자연스러워짐)
 
+    // ===========================================================================================================
+
+    public GameObject m_AttackSensor;
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
 
         m_animator.SetBool("Grounded", m_grounded); // 플레이어가 땅에 있다
+
+        m_AttackSensor.SetActive(false); // 공격 반경 비활성화
     }
 
     void Update()
@@ -75,7 +81,7 @@ public class Player_Controller : MonoBehaviour
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
-
+    
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
@@ -92,7 +98,14 @@ public class Player_Controller : MonoBehaviour
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
         }
+    }
 
-
+    public void AttackStart()
+    {
+        m_AttackSensor.SetActive(true);
+    }
+    public void AttackEnd()
+    {
+        m_AttackSensor.SetActive(false);
     }
 }
