@@ -49,11 +49,15 @@ public class Player_Controller : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+
+            m_AttackSensor.transform.localPosition = new Vector3(0.8f, 0.8f, 0.0f);
         }
         else if (inputX < 0) // 왼쪽?
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+
+            m_AttackSensor.transform.localPosition = new Vector3(-0.8f, 0.8f, 0.0f);
         }
 
         if (!m_rolling) // 구르지 않고 있다면?

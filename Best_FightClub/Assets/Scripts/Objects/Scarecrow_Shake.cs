@@ -5,13 +5,13 @@ using DG.Tweening;
 
 public class Scarecrow_Shake : MonoBehaviour
 {
-    public float zRot; // °¢µµ
-    public float time; // ½Ã°£
+    public float zRot; // ï¿½ï¿½ï¿½ï¿½
+    public float time; // ï¿½Ã°ï¿½
 
-    bool firstHit = false; // Ã¹¹ø¤Š ÇÇ°Ý
+    bool firstHit = false; // Ã¹ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½
 
     Sequence ShakeSequence;
-
+    
     void Start()
     {
     }
@@ -30,7 +30,7 @@ public class Scarecrow_Shake : MonoBehaviour
         }
     }
 
-    void Shake_it() // ¾çÂÊÀ¸·Î ±â¿ï¾îÁü
+    void Shake_it() // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         ShakeSequence = DOTween.Sequence()
         .OnStart(() => {})
@@ -41,7 +41,7 @@ public class Scarecrow_Shake : MonoBehaviour
         .Append(transform.DORotate(new Vector3(0.0f,0.0f, 0.0f), time, RotateMode.Fast));
     }
 
-    void Shake_itt() // ¿À¸¥ÂÊÀ¸·Î ±â¿ï¾îÁü
+    void Shake_itt() // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         ShakeSequence = DOTween.Sequence()
         .OnStart(() => {
