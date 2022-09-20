@@ -26,7 +26,7 @@ public class Scarecrow_Shake : MonoBehaviour
         {
             Debug.Log("Hit");
             
-            Shake_itt();
+            Shake_it();
         }
     }
 
