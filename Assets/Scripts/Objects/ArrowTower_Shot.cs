@@ -20,7 +20,7 @@ public class ArrowTower_Shot : MonoBehaviour
         if(Attack_Time >= 1.0f)
         {
             Debug.Log("Shot");
-            Instantiate(Arrow_B, transform.position, transform.rotation);
+            Instantiate(Arrow_B, transform.position, Arrow_B.transform.rotation);
             Attack_Time = 0.0f;
         }
     }
