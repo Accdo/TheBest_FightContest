@@ -85,6 +85,13 @@ public class Player_Controller : MonoBehaviour
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
+
+        // Block
+        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling)
+        {
+            m_animator.SetTrigger("Parring");
+            //m_animator.SetBool("IdleBlock", true);
+        }
     
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
