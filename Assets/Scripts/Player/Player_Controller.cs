@@ -7,6 +7,7 @@ using Input = UnityEngine.Input;
 public class Player_Controller : MonoBehaviour
 {
     [SerializeField] float m_speed = 4.0f; // 이동속도
+    [SerializeField] float      m_rollForce = 6.0f;
 
     private Animator m_animator; // 애니메이터
     private Rigidbody2D m_body2d; // Rigidbody 움직임 관련
@@ -23,6 +24,9 @@ public class Player_Controller : MonoBehaviour
     private int m_currentAttack = 0; // 몇번째 공격인지
     private float m_timeSinceAttack = 0.0f; // 연속 공격의 딜레이를 주기위한 타이머
     private float m_delayToIdle = 0.0f; // 달리기 동작에서 기본자세로 가는 0.05초의 지연시간(애니메이션이 자연스러워짐)
+    
+    private float               m_rollDuration = 8.0f / 14.0f;
+    private float               m_rollCurrentTime;
 
     // ===========================================================================================================
 
@@ -42,6 +46,14 @@ public class Player_Controller : MonoBehaviour
     {
         // 연속 공격의 딜레이를 주기위한 타이머
         m_timeSinceAttack += Time.deltaTime;
+
+        // 구르기 지속 시간을 확인하는 타이머 증가
+        if(m_rolling)
+            m_rollCurrentTime += Time.deltaTime;
+
+        // 타이머가 지속 시간을 연장하는 경우 구르기 비활성화
+        if(m_rollCurrentTime > m_rollDuration)
+            m_rolling = false;
 
         float inputX = Input.GetAxis("Horizontal");
 
@@ -91,6 +103,14 @@ public class Player_Controller : MonoBehaviour
         {
             m_animator.SetTrigger("Parring");
             //m_animator.SetBool("IdleBlock", true);
+        }
+
+        // Roll
+        else if (Input.GetKeyDown("left shift") && !m_rolling)
+        {
+            m_rolling = true;
+            m_animator.SetTrigger("Roll");
+            m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
         }
     
         //Run
