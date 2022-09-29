@@ -17,11 +17,10 @@ public class Arrow : MonoBehaviour
     }
     private void Update()
     {
-
         transform.position += dir * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("PlayerParring"))
         {
             Debug.Log("Parring");
