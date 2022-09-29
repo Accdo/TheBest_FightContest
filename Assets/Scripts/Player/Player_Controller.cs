@@ -31,6 +31,7 @@ public class Player_Controller : MonoBehaviour
     // ===========================================================================================================
 
     public GameObject m_AttackSensor;
+    public GameObject m_ParringSensor;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class Player_Controller : MonoBehaviour
         m_animator.SetBool("Grounded", m_grounded); // 플레이어가 땅에 있다
 
         m_AttackSensor.SetActive(false); // 공격 반경 비활성화
+        m_ParringSensor.SetActive(false); // 패링 반경 비활성화
     }
 
     void Update()
@@ -138,5 +140,14 @@ public class Player_Controller : MonoBehaviour
     public void AttackEnd()
     {
         m_AttackSensor.SetActive(false);
+    }
+
+    public void ParringStart()
+    {
+        m_ParringSensor.SetActive(true);
+    }
+    public void ParringEnd()
+    {
+        m_ParringSensor.SetActive(false);
     }
 }

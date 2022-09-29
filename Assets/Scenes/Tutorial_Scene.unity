@@ -662,6 +662,7 @@ MonoBehaviour:
   m_speed: 4
   m_rollForce: 6
   m_AttackSensor: {fileID: 38904458}
+  m_ParringSensor: {fileID: 1182780512}
 --- !u!1 &1102834777
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182780513}
   - component: {fileID: 1182780514}
+  - component: {fileID: 1182780515}
   m_Layer: 0
   m_Name: ParringSensor
   m_TagString: PlayerParring
@@ -788,7 +790,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.045886487, y: 0.035689563}
@@ -804,6 +806,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.78586227, y: 0.78586227}
   m_EdgeRadius: 0
+--- !u!50 &1182780515
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182780512}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1782756253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095451516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -2.27, z: 0}
+  m_LocalPosition: {x: 5, y: -1.78, z: 0}
   m_LocalScale: {x: 0.2388565, y: 0.2388565, z: 0.2388565}
   m_ConstrainProportionsScale: 0
   m_Children: []
