@@ -25,8 +25,9 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("Parring");
             dir = Vector3.right;
+            transform.rotation = Quaternion.Euler(0,0,90);
 
-            speed = 15;
+            speed = 30;
             lifeTime = 4.5f;
         }
     }
