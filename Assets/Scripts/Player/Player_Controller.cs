@@ -113,6 +113,8 @@ public class Player_Controller : MonoBehaviour
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
+
+            m_speed = 20;
         }
     
         //Run
@@ -121,6 +123,8 @@ public class Player_Controller : MonoBehaviour
             // Reset timer
             m_delayToIdle = 0.05f;
             m_animator.SetInteger("AnimState", 1);
+
+            m_speed = 4;
         }
 
         //Idle
