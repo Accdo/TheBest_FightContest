@@ -7,7 +7,7 @@ using Input = UnityEngine.Input;
 public class Player_Controller : MonoBehaviour
 {
     [SerializeField] float m_speed = 4.0f; // 이동속도
-    [SerializeField] float      m_rollForce = 6.0f;
+    [SerializeField] float m_rollForce = 6.0f;
 
     private Animator m_animator; // 애니메이터
     private Rigidbody2D m_body2d; // Rigidbody 움직임 관련
@@ -25,7 +25,7 @@ public class Player_Controller : MonoBehaviour
     private float m_timeSinceAttack = 0.0f; // 연속 공격의 딜레이를 주기위한 타이머
     private float m_delayToIdle = 0.0f; // 달리기 동작에서 기본자세로 가는 0.05초의 지연시간(애니메이션이 자연스러워짐)
     
-    private float               m_rollDuration = 8.0f / 14.0f;
+    private float               m_rollDuration = 0.5f;
     private float               m_rollCurrentTime;
 
     // ===========================================================================================================
@@ -76,6 +76,7 @@ public class Player_Controller : MonoBehaviour
 
         if (!m_rolling) // 구르지 않고 있다면?
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
+        
 
 
         // 애니메이션 ============================================================================
@@ -112,9 +113,9 @@ public class Player_Controller : MonoBehaviour
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
-            m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
 
-            m_speed = 20;
+            m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
+            Debug.Log("Roll!");
         }
     
         //Run
@@ -123,8 +124,6 @@ public class Player_Controller : MonoBehaviour
             // Reset timer
             m_delayToIdle = 0.05f;
             m_animator.SetInteger("AnimState", 1);
-
-            m_speed = 4;
         }
 
         //Idle
