@@ -44,8 +44,8 @@ public class Scarecrow_Shake : MonoBehaviour
         .Append(transform.DORotate(new Vector3(0.0f,0.0f, -zRot), time, RotateMode.Fast))
         .Append(transform.DORotate(new Vector3(0.0f,0.0f, 0.0f), time, RotateMode.Fast));
 
-        Instantiate(Eff_dust, new Vector3(0,0,0), transform.rotation);
-        Instantiate(Eff_straw, new Vector3(0,0,0), transform.rotation);
+        Instantiate(Eff_dust, new Vector3(4,0,0), transform.rotation);
+        Instantiate(Eff_straw, new Vector3(4,0,0), transform.rotation);
     }
 
     void Shake_itt() // 
