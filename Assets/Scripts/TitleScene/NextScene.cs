@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextScene : MonoBehaviour
 {
     public int SceneNumber = 1;
-
+    
     void Start()
     {
         
@@ -26,6 +26,7 @@ public class NextScene : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             SceneChange();
+            Debug.Log("SceneChange");
         }
     }
 }
