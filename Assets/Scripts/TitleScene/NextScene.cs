@@ -29,4 +29,12 @@ public class NextScene : MonoBehaviour
             Debug.Log("SceneChange");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            SceneChange();
+            Debug.Log("SceneChange");
+        }
+    }
 }
