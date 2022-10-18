@@ -20,11 +20,15 @@ public class Enemy_AI : MonoBehaviour
 
     int HP = 10;
 
+    public GameObject m_AttackSensor;
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_spriterend = GetComponent<SpriteRenderer>();
+
+        m_AttackSensor.SetActive(false); // 공격 반경 비활성화
     }
 
     void Update()
@@ -65,10 +69,14 @@ public class Enemy_AI : MonoBehaviour
         if(Traget_Player.position.x > transform.position.x) // 왼쪽 방향 보기
         {
             m_spriterend.flipX = false;
+
+            m_AttackSensor.transform.localPosition = new Vector3(0.3f, 0.0f, 0.0f);
         }
         else if(Traget_Player.position.x < transform.position.x) // 오른쪽 방향 보기
         {
             m_spriterend.flipX = true;
+
+            m_AttackSensor.transform.localPosition = new Vector3(-0.3f, 0.0f, 0.0f);
         }
     }
 
@@ -76,8 +84,43 @@ public class Enemy_AI : MonoBehaviour
     {
         DashFinish = true;
     }
-    void AttackEnd()
+
+    public void AttackStart()
     {
-        AttackFinish = true;
+        m_AttackSensor.SetActive(true);
+    }
+    public void AttackEnd()
+    {
+        m_AttackSensor.SetActive(false);
+    }
+
+    IEnumerator OnHeatTime()
+    {
+        int countTime = 0;
+
+        while(countTime < 10){
+            if(countTime%2 == 0)
+                m_spriterend.color = new Color32(255,150,150,255);
+            else
+                m_spriterend.color = new Color32(255,50,50,255);
+
+            yield return new WaitForSeconds(0.2f);
+
+            countTime++;
+        }
+
+        m_spriterend.color = new Color32(255,255,255,255);
+
+        // isUnBeatTime = false;
+
+        yield return null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("PlayerAttack"))
+        {
+            Debug.Log("Hit");
+            StartCoroutine(OnHeatTime());
+        }
     }
 }

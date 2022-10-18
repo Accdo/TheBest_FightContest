@@ -170,18 +170,32 @@ public class Player_Controller : MonoBehaviour
 
         if(GetHit)
         {
-            AlphaRedTime += Time.deltaTime;
+            StartCoroutine(OnHeatTime());
 
-            if(AlphaRedTime > 0.5f)
-            {
-                AlphaRedTime = 0.0f;
-                GetHit = false;
-            }
-            else
-            {
-                m_sprite.color = Color.Lerp(m_sprite.color, Color.red, AlphaRedTime);
-            }
+            GetHit = false;
         }
+    }
+
+    IEnumerator OnHeatTime()
+    {
+        int countTime = 0;
+
+        while(countTime < 10){
+            if(countTime%2 == 0)
+                m_sprite.color = new Color32(255,150,150,255);
+            else
+                m_sprite.color = new Color32(255,50,50,255);
+
+            yield return new WaitForSeconds(0.2f);
+
+            countTime++;
+        }
+
+        m_sprite.color = new Color32(255,255,255,255);
+
+        // isUnBeatTime = false;
+
+        yield return null;
     }
 
     public void AttackStart()
@@ -202,9 +216,18 @@ public class Player_Controller : MonoBehaviour
         m_ParringSensor.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     if(other.gameObject.CompareTag("EnemyAttack"))
+    //     {
+    //         Debug.Log("Hit");
+    //         GetHit = true;
+    //     }
+    // }
+
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("EnemyAttack"))
         {
+            Debug.Log("Hit");
             GetHit = true;
         }
     }
