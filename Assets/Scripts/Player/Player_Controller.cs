@@ -7,15 +7,17 @@ using Input = UnityEngine.Input;
 public class Player_Controller : MonoBehaviour
 {
     [SerializeField] float m_speed = 4.0f; // 이동속도
+    [SerializeField] float m_jumpForce = 7.5f; // 점프 가속
     [SerializeField] float m_rollForce = 6.0f;
 
     private Animator m_animator; // 애니메이터
     private Rigidbody2D m_body2d; // Rigidbody 움직임 관련
-    private Sensor_HeroKnight m_groundSensor;
-    private Sensor_HeroKnight m_wallSensorR1;
-    private Sensor_HeroKnight m_wallSensorR2;
-    private Sensor_HeroKnight m_wallSensorL1;
-    private Sensor_HeroKnight m_wallSensorL2;
+    private SpriteRenderer m_sprite;
+    private Player_Sensor m_groundSensor;
+    private Player_Sensor m_wallSensorR1;
+    private Player_Sensor m_wallSensorR2;
+    private Player_Sensor m_wallSensorL1;
+    private Player_Sensor m_wallSensorL2;
 
     private bool m_grounded = true; // 땅에 있는가
     private bool m_rolling = false; // 구르고 있는가
@@ -33,10 +35,15 @@ public class Player_Controller : MonoBehaviour
     public GameObject m_AttackSensor;
     public GameObject m_ParringSensor;
 
+    bool GetHit = false; // 피격 얻음
+    float AlphaRedTime = 0.0f; // 알파값 붉어지는 시간
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
+        m_sprite = GetComponent<SpriteRenderer>();
+        m_groundSensor = transform.Find("GroundSensor").GetComponent<Player_Sensor>();
 
         m_animator.SetBool("Grounded", m_grounded); // 플레이어가 땅에 있다
 
@@ -57,6 +64,20 @@ public class Player_Controller : MonoBehaviour
         if(m_rollCurrentTime > m_rollDuration)
             m_rolling = false;
 
+        // 땅에 잇
+        if (!m_grounded && m_groundSensor.State())
+        {
+            m_grounded = true;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
+
+        // 땅에 없
+        if (m_grounded && !m_groundSensor.State())
+        {
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
+        }
+
         float inputX = Input.GetAxis("Horizontal");
 
         if (inputX > 0) // 오른쪽?
@@ -74,10 +95,12 @@ public class Player_Controller : MonoBehaviour
             m_AttackSensor.transform.localPosition = new Vector3(-0.8f, 0.8f, 0.0f);
         }
 
+        // Move
         if (!m_rolling) // 구르지 않고 있다면?
             m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
         
-
+        // 공중에 있을 시?
+        m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         // 애니메이션 ============================================================================
 
@@ -118,6 +141,16 @@ public class Player_Controller : MonoBehaviour
             Debug.Log("Roll!");
         }
     
+        //Jump
+        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        {
+            m_animator.SetTrigger("Jump");
+            m_grounded = false;
+            m_animator.SetBool("Grounded", m_grounded);
+            m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
+            m_groundSensor.Disable(0.2f);
+        }
+
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
@@ -133,6 +166,21 @@ public class Player_Controller : MonoBehaviour
             m_delayToIdle -= Time.deltaTime;
             if (m_delayToIdle < 0)
                 m_animator.SetInteger("AnimState", 0);
+        }
+
+        if(GetHit)
+        {
+            AlphaRedTime += Time.deltaTime;
+
+            if(AlphaRedTime > 0.5f)
+            {
+                AlphaRedTime = 0.0f;
+                GetHit = false;
+            }
+            else
+            {
+                m_sprite.color = Color.Lerp(m_sprite.color, Color.red, AlphaRedTime);
+            }
         }
     }
 
@@ -152,5 +200,12 @@ public class Player_Controller : MonoBehaviour
     public void ParringEnd()
     {
         m_ParringSensor.SetActive(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("EnemyAttack"))
+        {
+            GetHit = true;
+        }
     }
 }
