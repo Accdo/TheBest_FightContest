@@ -20,7 +20,7 @@ public class Player_Controller : MonoBehaviour
     private Player_Sensor m_wallSensorL2;
 
     private bool m_grounded = true; // 땅에 있는가
-    private bool m_rolling = false; // 구르고 있는가
+    [SerializeField] private bool m_rolling = false; // 구르고 있는가
     private int m_facingDirection = 1; // 좌우
 
     private int m_currentAttack = 0; // 몇번째 공격인지
@@ -62,7 +62,10 @@ public class Player_Controller : MonoBehaviour
 
         // 타이머가 지속 시간을 연장하는 경우 구르기 비활성화
         if(m_rollCurrentTime > m_rollDuration)
+        {
             m_rolling = false;
+            m_rollCurrentTime = 0.0f;
+        }
 
         // 땅에 잇
         if (!m_grounded && m_groundSensor.State())
@@ -124,7 +127,7 @@ public class Player_Controller : MonoBehaviour
             m_timeSinceAttack = 0.0f;
         }
 
-        // Block
+        // Parring
         else if (Input.GetKeyDown(KeyCode.X) && !m_rolling)
         {
             m_animator.SetTrigger("Parring");
@@ -168,12 +171,13 @@ public class Player_Controller : MonoBehaviour
                 m_animator.SetInteger("AnimState", 0);
         }
 
-        if(GetHit)
+        if(GetHit) // 맞기
         {
             StartCoroutine(OnHeatTime());
 
             GetHit = false;
         }
+
     }
 
     IEnumerator OnHeatTime()
