@@ -11,16 +11,19 @@ public class Enemy_AI : MonoBehaviour
     private Rigidbody2D m_body2d; // Rigidbody 움직임 관련
     private SpriteRenderer m_spriterend;
 
+    // ==========================================================
+
     public Transform Traget_Player;
 
     float pattern_timer1;
 
     bool DashFinish = false;
-    bool AttackFinish = false;
-
-    int HP = 10;
 
     public GameObject m_AttackSensor;
+
+    // ==========================================================
+    bool GetHit = false; // 피격 얻음
+    float Hit_Timer = 0.0f; // 패링 무적 시간
 
     void Start()
     {
@@ -33,7 +36,20 @@ public class Enemy_AI : MonoBehaviour
 
     void Update()
     {
-        Pattern1();
+        if(GetHit) // 맞기
+        {
+            //StartCoroutine(OnHeatTime());
+
+            Hit_Timer += Time.deltaTime;
+            if(Hit_Timer >= 1.0f)
+            {
+                GetHit = false;
+                Hit_Timer = 0.0f;
+            }
+        }
+        else{
+            Pattern1();
+        }
     }
 
     void Pattern1()
@@ -121,6 +137,8 @@ public class Enemy_AI : MonoBehaviour
         {
             Debug.Log("Hit");
             StartCoroutine(OnHeatTime());
+
+            Hit_Timer = 0.0f;
         }
     }
 }

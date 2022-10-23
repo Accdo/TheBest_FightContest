@@ -35,7 +35,9 @@ public class Player_Controller : MonoBehaviour
     public GameObject m_AttackSensor;
     public GameObject m_ParringSensor;
 
+    float Hit_Timer = 0.0f; // 패링 무적 시간
     bool GetHit = false; // 피격 얻음
+
     float AlphaRedTime = 0.0f; // 알파값 붉어지는 시간
 
     float Parring_Timer = 0.0f; // 패링 타이머
@@ -43,6 +45,7 @@ public class Player_Controller : MonoBehaviour
 
     float Rolling_Timer = 0.0f; // 구르기 타이머
     bool can_Rolling = true; // 굴러도 되는가
+
 
     void Start()
     {
@@ -134,7 +137,7 @@ public class Player_Controller : MonoBehaviour
         // 애니메이션 ============================================================================
 
         //Attack
-        if (Input.GetKeyDown(KeyCode.Z) && m_timeSinceAttack > 0.25f && !m_rolling)
+        if (Input.GetKeyDown(KeyCode.Z) && m_timeSinceAttack > 0.25f && !m_rolling && !GetHit)
         {
             m_currentAttack++;
 
@@ -154,7 +157,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         // Parring
-        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring)
+        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring && !GetHit)
         {
             m_animator.SetTrigger("Parring");
             //m_animator.SetBool("IdleBlock", true);
@@ -162,7 +165,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && can_Rolling)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && can_Rolling && !GetHit)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -173,7 +176,7 @@ public class Player_Controller : MonoBehaviour
         }
     
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
+        else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !GetHit)
         {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
@@ -183,7 +186,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon && !GetHit)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
@@ -201,9 +204,14 @@ public class Player_Controller : MonoBehaviour
 
         if(GetHit) // 맞기
         {
-            StartCoroutine(OnHeatTime());
-
-            GetHit = false;
+            //StartCoroutine(OnHeatTime());
+            
+            Hit_Timer += Time.deltaTime;
+            if(Hit_Timer >= 1.0f)
+            {
+                GetHit = false;
+                Hit_Timer = 0.0f;
+            }
         }
 
     }
@@ -259,7 +267,7 @@ public class Player_Controller : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("EnemyAttack"))
         {
-            Debug.Log("Hit");
+            StartCoroutine(OnHeatTime());
             GetHit = true;
         }
     }
