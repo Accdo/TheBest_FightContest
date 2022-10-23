@@ -38,6 +38,12 @@ public class Player_Controller : MonoBehaviour
     bool GetHit = false; // 피격 얻음
     float AlphaRedTime = 0.0f; // 알파값 붉어지는 시간
 
+    float Parring_Timer = 0.0f; // 패링 타이머
+    bool can_Parring = true; // 패링을 할수 있는가
+
+    float Rolling_Timer = 0.0f; // 구르기 타이머
+    bool can_Rolling = true; // 굴러도 되는가
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -105,6 +111,26 @@ public class Player_Controller : MonoBehaviour
         // 공중에 있을 시?
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
+        if(!can_Parring)
+        {
+            Parring_Timer += Time.deltaTime;
+            if(Parring_Timer >= 3.0f)
+            {
+                can_Parring = true;
+                Parring_Timer = 0.0f;
+            }
+        }
+
+        if(!can_Rolling)
+        {
+            Rolling_Timer += Time.deltaTime;
+            if(Rolling_Timer >= 3.0f)
+            {
+                can_Rolling = true;
+                Rolling_Timer = 0.0f;
+            }
+        }
+
         // 애니메이션 ============================================================================
 
         //Attack
@@ -128,20 +154,22 @@ public class Player_Controller : MonoBehaviour
         }
 
         // Parring
-        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling)
+        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring)
         {
             m_animator.SetTrigger("Parring");
             //m_animator.SetBool("IdleBlock", true);
+            can_Parring = false;
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && can_Rolling)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
 
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
-            Debug.Log("Roll!");
+            ///Debug.Log("Roll!");
+            can_Rolling = false;
         }
     
         //Jump
