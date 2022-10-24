@@ -46,6 +46,10 @@ public class Player_Controller : MonoBehaviour
     float Rolling_Timer = 0.0f; // 구르기 타이머
     bool can_Rolling = true; // 굴러도 되는가
 
+    // ===========================================================================================================
+
+    public GameObject m_UltiSkill;
+
 
     void Start()
     {
@@ -58,6 +62,7 @@ public class Player_Controller : MonoBehaviour
 
         m_AttackSensor.SetActive(false); // 공격 반경 비활성화
         m_ParringSensor.SetActive(false); // 패링 반경 비활성화
+        m_UltiSkill.SetActive(false); // 패링 반경 비활성화
     }
 
     void Update()
@@ -156,6 +161,12 @@ public class Player_Controller : MonoBehaviour
             m_timeSinceAttack = 0.0f;
         }
 
+        // UltiSkill
+        else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit)
+        {
+            m_animator.SetTrigger("UltiSkill");
+        }
+
         // Parring
         else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring && !GetHit)
         {
@@ -186,7 +197,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         //Run
-        else if (Mathf.Abs(inputX) > Mathf.Epsilon && !GetHit)
+        else if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
             // Reset timer
             m_delayToIdle = 0.05f;
@@ -254,6 +265,11 @@ public class Player_Controller : MonoBehaviour
     public void ParringEnd()
     {
         m_ParringSensor.SetActive(false);
+    }
+
+    public void UltiSkillStart()
+    {
+        m_UltiSkill.SetActive(true);
     }
 
     // private void OnCollisionEnter2D(Collision2D other) {

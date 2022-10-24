@@ -172,10 +172,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 6
-  m_jumpForce: 7.5
+  m_jumpForce: 10
   m_rollForce: 15
+  m_rolling: 0
   m_AttackSensor: {fileID: 6583842407702228291}
   m_ParringSensor: {fileID: 6583842408840037289}
+  m_UltiSkill: {fileID: 0}
 --- !u!95 &6583842408836293285
 Animator:
   serializedVersion: 4
