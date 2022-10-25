@@ -50,6 +50,9 @@ public class Player_Controller : MonoBehaviour
 
     public GameObject m_UltiSkill;
 
+    public GameObject TestSkill;
+    public Transform TS_pos;
+
 
     void Start()
     {
@@ -63,6 +66,7 @@ public class Player_Controller : MonoBehaviour
         m_AttackSensor.SetActive(false); // 공격 반경 비활성화
         m_ParringSensor.SetActive(false); // 패링 반경 비활성화
         m_UltiSkill.SetActive(false); // 패링 반경 비활성화
+        TestSkill.SetActive(false);
     }
 
     void Update()
@@ -103,6 +107,9 @@ public class Player_Controller : MonoBehaviour
             m_facingDirection = 1;
 
             m_AttackSensor.transform.localPosition = new Vector3(0.8f, 0.8f, 0.0f);
+
+            TS_pos.localPosition = new Vector3(1.3f, 0.85f, 0.0f);
+            TestSkill.transform.localRotation  = Quaternion.Euler(0, 0, 0);
         }
         else if (inputX < 0) // 왼쪽?
         {
@@ -110,6 +117,9 @@ public class Player_Controller : MonoBehaviour
             m_facingDirection = -1;
 
             m_AttackSensor.transform.localPosition = new Vector3(-0.8f, 0.8f, 0.0f);
+
+            TS_pos.localPosition = new Vector3(-1.3f, 0.85f, 0.0f);
+            TestSkill.transform.localRotation  = Quaternion.Euler(0, 180, 0);
         }
 
         // Move
@@ -270,6 +280,12 @@ public class Player_Controller : MonoBehaviour
     public void UltiSkillStart()
     {
         m_UltiSkill.SetActive(true);
+    }
+
+    public void BosskillStart()
+    {
+        TestSkill.transform.position = TS_pos.position;
+        TestSkill.SetActive(true);
     }
 
     // private void OnCollisionEnter2D(Collision2D other) {
