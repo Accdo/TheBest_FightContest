@@ -23,7 +23,8 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("PlayerParring"))
         {
-            Debug.Log("Parring");
+            gameObject.tag = "ParriedArrow";
+
             dir = Vector3.right;
             transform.rotation = Quaternion.Euler(0,0,180);
 
@@ -31,4 +32,6 @@ public class Arrow : MonoBehaviour
             lifeTime = 4.5f;
         }
     }
+
+
 }

@@ -48,9 +48,9 @@ public class Player_Controller : MonoBehaviour
 
     // ===========================================================================================================
 
-    public GameObject m_UltiSkill;
+    public GameObject m_UltiSkill; // 궁극기
 
-    public GameObject TestSkill;
+    public GameObject TestSkill; // 보스2 테스트 스킬
     public Transform TS_pos;
 
 

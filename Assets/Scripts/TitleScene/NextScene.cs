@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
-    public int SceneNumber = 1;
+    public int NextSceneNumber = 1;
     
     void Start()
     {
@@ -19,7 +19,7 @@ public class NextScene : MonoBehaviour
 
     public void SceneChange()
     {
-        SceneManager.LoadScene(SceneNumber);
+        SceneManager.LoadScene(NextSceneNumber);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

@@ -9,6 +9,7 @@ TagManager:
   - Arrow
   - PlayerParring
   - EnemyAttack
+  - ParriedArrow
   layers:
   - Default
   - TransparentFX

@@ -10,13 +10,25 @@ public class ArrowTower_Shot : MonoBehaviour
 
     float Attack_Time;
 
+    // ==============================
+
+    public int HitCount;
+    public GameObject dialogwindow;
+
     void Start()
     {
         Attack_Time = 0.0f;
+
+        HitCount = 0;
     }
 
     void Update()
     {
+        if(HitCount >= 5)
+        {
+            dialogwindow.SetActive(true);
+        }
+
         Attack_Time += Time.deltaTime;
 
         if(Attack_Time >= 1.0f)
@@ -24,6 +36,13 @@ public class ArrowTower_Shot : MonoBehaviour
             Debug.Log("Shot");
             Instantiate(Arrow_B, Shot_pos.position, Arrow_B.transform.rotation);
             Attack_Time = 0.0f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("ParriedArrow"))
+        {
+            ++HitCount;
         }
     }
 }

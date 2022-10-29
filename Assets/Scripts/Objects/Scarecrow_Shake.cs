@@ -5,30 +5,38 @@ using DG.Tweening;
 
 public class Scarecrow_Shake : MonoBehaviour
 {
-    public float zRot; // 
-    public float time; // 
+    public float zRot; 
+    public float time; 
 
-    bool firstHit = false; // 
+    bool firstHit = false;
 
     Sequence ShakeSequence;
 
     public GameObject Eff_dust;
     public GameObject Eff_straw;
 
+    // ==============================
+
+    public int HitCount;
+    public GameObject dialogwindow;
     
     void Start()
     {
+        HitCount = 0;
     }
 
     void Update()
     {
-
+        if(HitCount >= 10)
+        {
+            dialogwindow.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
-            Debug.Log("Hit");
+            ++HitCount;
             
             Shake_it();
         }
