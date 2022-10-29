@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Project
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 350}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 350}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 300}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 21362
+  controlID: 10075
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 300}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 21340
+  controlID: 10101
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,8 +166,8 @@ MonoBehaviour:
     y: 0
     width: 1044
     height: 353
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 21363
+  controlID: 10110
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 560
     height: 501
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -323,8 +323,8 @@ MonoBehaviour:
     y: 0
     width: 316
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 1
+  m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
@@ -647,9 +647,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.2321605, y: -0.12201021, z: 0.48246557}
+    m_Target: {x: 1031.725, y: 403.3006, z: 10.552989}
     speed: 2
-    m_Value: {x: 0.2321605, y: -0.12201021, z: 0.48246557}
+    m_Value: {x: 1031.725, y: 403.3006, z: 10.552989}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -700,9 +700,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.02238
+    m_Target: 305.725
     speed: 2
-    m_Value: 7.02238
+    m_Value: 305.725
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -957,7 +957,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 36274
+  m_LastSelectedObjectID: -18380
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1017,9 +1017,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 90a90000
+      m_SelectedIDs: 3e770000
       m_LastClickedID: 0
-      m_ExpandedIDs: 6a47ffff5cb0ffffa8b5ffffbab6ffffa0b7ffffb4b8ffff7eb9ffff2ebbffff54bcffffa8bdffff8ebeffff9abfffffacc0ffff92c1ffffaec2ffffe4c3ffffaaddffff06e7ffffb8eaffffbaeaffff60edffff8eeeffffc8f6ffffdaf8ffff1078000004790000888200005c8d0000
+      m_ExpandedIDs: 0264ffff0c64ffff9a65ffff4c66ffffa867ffffda68ffff3e76ffff6278ffffa47affff8081ffff648dffff6491ffff34b8ffff9eb8ffff5cdeffff7ce7ffff86e8ffff4ee9ffff7eeaffff90ebffffccecffffdcedffffc6eeffffd8efffffcef2ffff7af4ffffd2f6ffffe4f7ffffd2faffff787700008a770000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1084,22 +1084,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Graphic Source/Effect/Boss_Eff
+    - Assets/Graphic Source/Title_CutScene
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-  - Assets/Graphic Source/Effect/Boss_Eff
+  - Assets/Graphic Source/Title_CutScene
   m_LastFoldersGridSize: 56
-  m_LastProjectPath: C:\WorkSpace\TheBest_FightContest
+  m_LastProjectPath: C:\WorkSpace\GameProject\TheBest_FightContest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 88a90000
-    m_LastClickedID: 43400
-    m_ExpandedIDs: 00000000d2710000d47100006c73000072730000107d00001e7d000000ca9a3b
+    m_SelectedIDs: 3e770000
+    m_LastClickedID: 30526
+    m_ExpandedIDs: 000000001e6f0000206f0000226f0000266f0000286f00002a6f00002c6f0000306f0000326f0000346f0000e670000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1127,7 +1127,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d2710000d47100006c73000072730000107d00001e7d000000ca9a3b
+    m_ExpandedIDs: 000000001e6f0000206f0000226f0000246f0000266f0000286f00002a6f0000306f0000326f0000346f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
