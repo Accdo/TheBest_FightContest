@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 300}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 10075
+  controlID: 176
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 300}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 10101
+  controlID: 116
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -220,8 +220,8 @@ MonoBehaviour:
     y: 749
     width: 1044
     height: 198
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10110
+  controlID: 19
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 560
     height: 501
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -647,9 +647,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1031.725, y: 403.3006, z: 10.552989}
+    m_Target: {x: 2.9331117, y: -1.7029619, z: -0.03145504}
     speed: 2
-    m_Value: {x: 1031.725, y: 403.3006, z: 10.552989}
+    m_Value: {x: 2.9331117, y: -1.7029619, z: -0.03145504}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -700,9 +700,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 305.725
+    m_Target: 2.413811
     speed: 2
-    m_Value: 305.725
+    m_Value: 2.413811
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -806,7 +806,7 @@ MonoBehaviour:
       e10: 0
       e11: 0.58444446
       e12: 0
-      e13: 50.066666
+      e13: 52.600014
       e20: 0
       e21: 0
       e22: 1
@@ -912,9 +912,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: b93e01d6f5a10a64486eaa8890653b7e, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 97787f55e266562409b6bcecd532ccb2, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 823188450001712421, guid: b93e01d6f5a10a64486eaa8890653b7e, type: 2}
+  - m_Target: {fileID: 5903736640668306143, guid: 97787f55e266562409b6bcecd532ccb2, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -957,7 +957,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -18380
+  m_LastSelectedObjectID: 41144
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1017,9 +1017,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3e770000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0264ffff0c64ffff9a65ffff4c66ffffa867ffffda68ffff3e76ffff6278ffffa47affff8081ffff648dffff6491ffff34b8ffff9eb8ffff5cdeffff7ce7ffff86e8ffff4ee9ffff7eeaffff90ebffffccecffffdcedffffc6eeffffd8efffffcef2ffff7af4ffffd2f6ffffe4f7ffffd2faffff787700008a770000
+      m_ExpandedIDs: b0dffeffbadffeff9ce0feffece0feff30e4feff58e5feffb8e6feff2cecfeffd4effeff1ef1feff44f2feff90f3feffc4f4feff9af9feff2cfbfeffecfcfeffa0fffeffec00ffffa205ffff5c91ffffe494ffff3afbffffe6690000026a00005c760000787600006a9f00008c9f0000b8a00000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1084,22 +1084,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Graphic Source/Title_CutScene
+    - Assets/Prefabs/Tutorial_Object/obj_ArrowTower
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-  - Assets/Graphic Source/Title_CutScene
+  - Assets/Prefabs/Tutorial_Object/obj_ArrowTower
   m_LastFoldersGridSize: 56
   m_LastProjectPath: C:\WorkSpace\GameProject\TheBest_FightContest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3e770000
-    m_LastClickedID: 30526
-    m_ExpandedIDs: 000000001e6f0000206f0000226f0000266f0000286f00002a6f00002c6f0000306f0000326f0000346f0000e670000000ca9a3b
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: b69f0000
+    m_LastClickedID: 40886
+    m_ExpandedIDs: 00000000726e0000746e0000766e0000786e00007a6e00007c6e0000806e0000826e0000846e0000866e0000b46e00009670000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1127,7 +1127,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001e6f0000206f0000226f0000246f0000266f0000286f00002a6f0000306f0000326f0000346f000000ca9a3b
+    m_ExpandedIDs: 00000000726e0000746e0000766e0000786e00007a6e00007c6e00007e6e0000806e0000826e0000846e0000866e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

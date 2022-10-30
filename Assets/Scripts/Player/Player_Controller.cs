@@ -6,6 +6,9 @@ using Input = UnityEngine.Input;
 
 public class Player_Controller : MonoBehaviour
 {
+    [SerializeField] float m_hp = 100;
+    [SerializeField] float m_mp = 100;
+
     [SerializeField] float m_speed = 4.0f; // 이동속도
     [SerializeField] float m_jumpForce = 7.5f; // 점프 가속
     [SerializeField] float m_rollForce = 6.0f;
@@ -53,9 +56,13 @@ public class Player_Controller : MonoBehaviour
     public GameObject TestSkill; // 보스2 테스트 스킬
     public Transform TS_pos;
 
+    public Player_UI player_ui;
 
     void Start()
     {
+        m_hp = 100;
+        m_mp = 100;
+
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_sprite = GetComponent<SpriteRenderer>();
@@ -175,6 +182,9 @@ public class Player_Controller : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit)
         {
             m_animator.SetTrigger("UltiSkill");
+
+            m_mp -= 20.0f;
+            player_ui.GivePlayerMp(m_mp);
         }
 
         // Parring
@@ -183,6 +193,9 @@ public class Player_Controller : MonoBehaviour
             m_animator.SetTrigger("Parring");
             //m_animator.SetBool("IdleBlock", true);
             can_Parring = false;
+
+            m_mp -= 10.0f;
+            player_ui.GivePlayerMp(m_mp);
         }
 
         // Roll
@@ -299,8 +312,21 @@ public class Player_Controller : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("EnemyAttack"))
         {
+            m_hp -= 10.0f;
+            player_ui.GivePlayerHp(m_hp);
+
             StartCoroutine(OnHeatTime());
             GetHit = true;
         }
     }
+
+    // public void GivePlayerHp(float _hp)
+    // {
+    //     _hp = m_hp;
+    // }
+
+    // public void GivePlayerMp(float _mp)
+    // {
+    //     _mp = m_mp;
+    // }
 }
