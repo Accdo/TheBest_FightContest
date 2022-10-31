@@ -9,6 +9,7 @@ public class ArrowTower_Shot : MonoBehaviour
     public Transform Shot_pos;
 
     float Attack_Time;
+    public float Attack_delay;
 
     // ==============================
 
@@ -28,14 +29,17 @@ public class ArrowTower_Shot : MonoBehaviour
         {
             dialogwindow.SetActive(true);
         }
-
-        Attack_Time += Time.deltaTime;
-
-        if(Attack_Time >= 1.0f)
+        
+        if(dialogwindow.activeSelf == false)
         {
-            Debug.Log("Shot");
-            Instantiate(Arrow_B, Shot_pos.position, Arrow_B.transform.rotation);
-            Attack_Time = 0.0f;
+            Attack_Time += Time.deltaTime;
+
+            if(Attack_Time >= Attack_delay)
+            {
+                Debug.Log("Shot");
+                Instantiate(Arrow_B, Shot_pos.position, Arrow_B.transform.rotation);
+                Attack_Time = 0.0f;
+            }
         }
     }
 

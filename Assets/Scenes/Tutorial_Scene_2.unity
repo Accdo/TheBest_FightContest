@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 452419355681182069, guid: 4d44431c47757a348a71657fdccf032e, type: 3}
+      propertyPath: Sec_Effect
+      value: 
+      objectReference: {fileID: 387102623}
     - target: {fileID: 6691358568880361962, guid: 4d44431c47757a348a71657fdccf032e, type: 3}
       propertyPath: m_Name
       value: Effect_BG
@@ -371,6 +375,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1333975569421533114, guid: a5f84276c3739054cb5acb8a0fd0491d, type: 3}
   m_PrefabInstance: {fileID: 387102622}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &552129289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4006002168598723970, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
+  m_PrefabInstance: {fileID: 1702913151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cd9cc0e86ebb44d8d8179ab177388a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577881220
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,37 +416,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1968549098}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &590617900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 590617901}
-  m_Layer: 0
-  m_Name: Shot_shadow_Pos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &590617901
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590617900}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.541, y: -1.35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1968549098}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019126950
 GameObject:
@@ -628,7 +612,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1663322916}
   - component: {fileID: 1663322918}
-  - component: {fileID: 1663322917}
   m_Layer: 0
   m_Name: ArrowTower_shadow
   m_TagString: Untagged
@@ -651,22 +634,6 @@ Transform:
   m_Father: {fileID: 1968549098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 180}
---- !u!114 &1663322917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663322915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664d71276019c154ab734a3776d4aa16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Arrow_B: {fileID: 6245266240458064586, guid: 2c770af98e54dde4ea61a8a1350ba1b8, type: 3}
-  Shot_pos: {fileID: 590617901}
-  HitCount: 0
-  dialogwindow: {fileID: 0}
 --- !u!212 &1663322918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -952,6 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Arrow_B: {fileID: 6245266240458064586, guid: c41e0c5edc8bf964f892eb2f2a33a27e, type: 3}
   Shot_pos: {fileID: 577881221}
+  Attack_delay: 2
   HitCount: 0
   dialogwindow: {fileID: 46586208}
 --- !u!212 &1968549097
@@ -1020,7 +988,6 @@ Transform:
   m_Children:
   - {fileID: 1663322916}
   - {fileID: 577881221}
-  - {fileID: 590617901}
   - {fileID: 1974439811}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1153,7 +1120,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968549098}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5242828698057858509
 PrefabInstance:
@@ -1287,6 +1254,10 @@ PrefabInstance:
       propertyPath: TestSkill
       value: 
       objectReference: {fileID: 1668240957}
+    - target: {fileID: 6583842408836293287, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
+      propertyPath: player_ui
+      value: 
+      objectReference: {fileID: 552129289}
     - target: {fileID: 6583842408836293287, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: m_UltiSkill
       value: 

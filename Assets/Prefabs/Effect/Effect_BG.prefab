@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6691358568880361973}
+  - component: {fileID: 452419355681182069}
   m_Layer: 0
   m_Name: Effect_BG
   m_TagString: Untagged
@@ -38,6 +39,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &452419355681182069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691358568880361962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6939f13bb67aeed4ea05d2d83c14e125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sec_Effect: {fileID: 0}
 --- !u!1 &6691358569446968350
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +454,6 @@ GameObject:
   - component: {fileID: 6691358570355827294}
   - component: {fileID: 6691358570355827295}
   - component: {fileID: 6691358570355827292}
-  - component: {fileID: 6691358570355827289}
   m_Layer: 0
   m_Name: FirstLager
   m_TagString: Untagged
@@ -535,19 +548,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6691358570355827289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6691358570355827293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6939f13bb67aeed4ea05d2d83c14e125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sec_Effect: {fileID: 0}
 --- !u!1 &6691358570381226799
 GameObject:
   m_ObjectHideFlags: 0

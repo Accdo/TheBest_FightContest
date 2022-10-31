@@ -10,6 +10,8 @@ public class Player_UltiSkill : MonoBehaviour
     void Start()
     {
         Invoke("On_Eff", 0.3f);
+
+        Invoke("End_UltiSkill", 15);
     }
 
     void Update()
@@ -20,5 +22,10 @@ public class Player_UltiSkill : MonoBehaviour
     void On_Eff()
     {
         Sec_Effect.SetActive(true);
+    }
+
+    void End_UltiSkill()
+    {
+        this.gameObject.SetActive(false);
     }
 }

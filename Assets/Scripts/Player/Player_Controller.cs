@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float m_mp = 100;
 
     [SerializeField] float m_speed = 4.0f; // 이동속도
-    [SerializeField] float m_jumpForce = 7.5f; // 점프 가속
+    [SerializeField] float m_jumpForce = 20.0f; // 점프 가속
     [SerializeField] float m_rollForce = 6.0f;
 
     private Animator m_animator; // 애니메이터
@@ -22,7 +22,7 @@ public class Player_Controller : MonoBehaviour
     private Player_Sensor m_wallSensorL1;
     private Player_Sensor m_wallSensorL2;
 
-    private bool m_grounded = true; // 땅에 있는가
+    [SerializeField] private bool m_grounded = true; // 땅에 있는가
     [SerializeField] private bool m_rolling = false; // 구르고 있는가
     private int m_facingDirection = 1; // 좌우
 
@@ -52,11 +52,14 @@ public class Player_Controller : MonoBehaviour
     // ===========================================================================================================
 
     public GameObject m_UltiSkill; // 궁극기
+    bool state_Ulti = true; // 궁극기 상태 true : 기본 배경, false : 궁극기 배경
 
     public GameObject TestSkill; // 보스2 테스트 스킬
-    public Transform TS_pos;
+    public Transform TS_pos; // 테스트 스킬 생성 좌표
 
     public Player_UI player_ui;
+
+    public Shadow_Copy shadow_player;
 
     void Start()
     {
@@ -97,6 +100,8 @@ public class Player_Controller : MonoBehaviour
         {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
+
+            shadow_player.IsGround = true;
         }
 
         // 땅에 없
@@ -104,13 +109,15 @@ public class Player_Controller : MonoBehaviour
         {
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
+
+            //shadow_player.IsGround = false;
         }
 
         float inputX = Input.GetAxis("Horizontal");
 
         if (inputX > 0) // 오른쪽?
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = 1;
 
             m_AttackSensor.transform.localPosition = new Vector3(0.8f, 0.8f, 0.0f);
@@ -120,7 +127,7 @@ public class Player_Controller : MonoBehaviour
         }
         else if (inputX < 0) // 왼쪽?
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = -1;
 
             m_AttackSensor.transform.localPosition = new Vector3(-0.8f, 0.8f, 0.0f);
@@ -164,14 +171,14 @@ public class Player_Controller : MonoBehaviour
             m_currentAttack++;
 
             // Loop back to one after third attack
-            if (m_currentAttack > 3)
+            if (m_currentAttack > 4)
                 m_currentAttack = 1;
 
             // Reset Attack combo if time since last attack is too large
             if (m_timeSinceAttack > 1.0f)
                 m_currentAttack = 1;
 
-            // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+            // Call one of three attack animations "Attack1", "Attack2", "Attack3", "Attack4"
             m_animator.SetTrigger("Attack" + m_currentAttack);
 
             // Reset timer
@@ -181,10 +188,18 @@ public class Player_Controller : MonoBehaviour
         // UltiSkill
         else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit)
         {
-            m_animator.SetTrigger("UltiSkill");
+            if(state_Ulti) // 기본 배경, 궁극기 쓰기전
+            {
+                m_animator.SetTrigger("UltiSkill");
 
-            m_mp -= 20.0f;
-            player_ui.GivePlayerMp(m_mp);
+                m_mp -= 20.0f;
+                player_ui.GivePlayerMp(m_mp);
+            }
+            else // 궁극기 배경, 궁극기 쓴 상태
+            {
+
+            }
+        
         }
 
         // Parring
@@ -215,8 +230,11 @@ public class Player_Controller : MonoBehaviour
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
-            m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
+            //m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
+            m_body2d.AddForce(Vector2.up * m_jumpForce, ForceMode2D.Impulse);
             m_groundSensor.Disable(0.2f);
+
+            shadow_player.IsGround = false;
         }
 
         //Run
@@ -311,6 +329,15 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("EnemyAttack"))
+        {
+            m_hp -= 10.0f;
+            player_ui.GivePlayerHp(m_hp);
+
+            StartCoroutine(OnHeatTime());
+            GetHit = true;
+        }
+
+        if(other.gameObject.CompareTag("Arrow"))
         {
             m_hp -= 10.0f;
             player_ui.GivePlayerHp(m_hp);

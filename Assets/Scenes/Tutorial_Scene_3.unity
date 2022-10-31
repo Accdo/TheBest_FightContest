@@ -901,6 +901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main_animator: {fileID: 1605406691}
+  IsGround: 1
+  player_transform: {fileID: 1605406692}
 --- !u!1 &1946402093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1333975569421533114, guid: a5f84276c3739054cb5acb8a0fd0491d, type: 3}
@@ -1153,6 +1155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 452419355681182069, guid: 4d44431c47757a348a71657fdccf032e, type: 3}
+      propertyPath: Sec_Effect
+      value: 
+      objectReference: {fileID: 1946402093}
     - target: {fileID: 6691358568880361962, guid: 4d44431c47757a348a71657fdccf032e, type: 3}
       propertyPath: m_Name
       value: Effect_BG
