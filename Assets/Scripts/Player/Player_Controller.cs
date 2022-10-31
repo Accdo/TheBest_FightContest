@@ -62,6 +62,13 @@ public class Player_Controller : MonoBehaviour
 
     public Shadow_Copy shadow_player;
 
+    public AudioClip audioAttack1;
+    public AudioClip audioAttack2;
+    public AudioClip audioAttack3;
+    public AudioClip audioAttack4;
+    public AudioClip audioParring;
+    private AudioSource audioSource;
+
     void Start()
     {
         m_hp = 100;
@@ -71,6 +78,7 @@ public class Player_Controller : MonoBehaviour
         m_body2d = GetComponent<Rigidbody2D>();
         m_sprite = GetComponent<SpriteRenderer>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Player_Sensor>();
+        audioSource = GetComponent<AudioSource>();
 
         m_animator.SetBool("Grounded", m_grounded); // 플레이어가 땅에 있다
 
@@ -181,6 +189,7 @@ public class Player_Controller : MonoBehaviour
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3", "Attack4"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+            PlaySound("attack" + m_currentAttack);
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
@@ -192,6 +201,7 @@ public class Player_Controller : MonoBehaviour
             if(state_Ulti) // 기본 배경, 궁극기 쓰기전
             {
                 m_animator.SetTrigger("UltiSkill");
+                PlaySound("attack3");
 
                 m_mp -= 20.0f;
                 player_ui.GivePlayerMp(m_mp);
@@ -201,6 +211,7 @@ public class Player_Controller : MonoBehaviour
             else // 궁극기 배경, 궁극기 쓴 상태
             {
                 m_animator.SetTrigger("UltiSkill_Fin");
+                PlaySound("attack4");
 
                 state_Ulti = true;
             }
@@ -210,7 +221,7 @@ public class Player_Controller : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
         {
             m_animator.SetTrigger("Parring");
-            //m_animator.SetBool("IdleBlock", true);
+            PlaySound("parring");
             can_Parring = false;
 
             m_mp -= 10.0f;
@@ -270,6 +281,29 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
+    }
+
+    void PlaySound(string action)
+    {
+        switch(action)
+        {
+            case "attack1":
+                audioSource.clip = audioAttack1;
+                break;
+            case "attack2":
+                audioSource.clip = audioAttack2;
+                break;
+            case "attack3":
+                audioSource.clip = audioAttack3;
+                break;
+            case "attack4":
+                audioSource.clip = audioAttack4;
+                break;
+            case "parring":
+                audioSource.clip = audioParring;
+                break;
+        }
+        audioSource.Play();
     }
 
     IEnumerator OnHeatTime()
