@@ -224,7 +224,6 @@ MonoBehaviour:
   audioAttack3: {fileID: 8300000, guid: 18edb532f8be71e4e8ce872b8a4d6db5, type: 3}
   audioAttack4: {fileID: 8300000, guid: 84ac2e10277ccb642ab7d179945a69cc, type: 3}
   audioParring: {fileID: 8300000, guid: 74ad91b8358ae7344bcec0761c5005d1, type: 3}
-  audioWalk: {fileID: 8300000, guid: 1d516b7d8b670284c83fc6af078cfad6, type: 3}
 --- !u!95 &6583842408836293285
 Animator:
   serializedVersion: 4
@@ -355,7 +354,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -571,7 +570,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c3f17fd4328801d49969837d1808031c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_FlipX: 1
