@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float m_mp = 100;
 
     [SerializeField] float m_speed = 4.0f; // 이동속도
-    [SerializeField] float m_jumpForce = 20.0f; // 점프 가속
+    [SerializeField] float m_jumpForce = 25.0f; // 점프 가속
     [SerializeField] float m_rollForce = 6.0f;
 
     private Animator m_animator; // 애니메이터
@@ -51,7 +51,8 @@ public class Player_Controller : MonoBehaviour
 
     // ===========================================================================================================
 
-    public GameObject m_UltiSkill; // 궁극기
+    public GameObject m_UltiSkill; // 궁극기 통합
+    public GameObject m_SecEffect; // 두번쨰 레이저
     bool state_Ulti = true; // 궁극기 상태 true : 기본 배경, false : 궁극기 배경
 
     public GameObject TestSkill; // 보스2 테스트 스킬
@@ -186,7 +187,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         // UltiSkill
-        else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit)
+        else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
         {
             if(state_Ulti) // 기본 배경, 궁극기 쓰기전
             {
@@ -194,16 +195,19 @@ public class Player_Controller : MonoBehaviour
 
                 m_mp -= 20.0f;
                 player_ui.GivePlayerMp(m_mp);
+
+                state_Ulti = false;
             }
             else // 궁극기 배경, 궁극기 쓴 상태
             {
+                m_animator.SetTrigger("UltiSkill_Fin");
 
+                state_Ulti = true;
             }
-        
         }
 
         // Parring
-        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring && !GetHit)
+        else if (Input.GetKeyDown(KeyCode.X) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
         {
             m_animator.SetTrigger("Parring");
             //m_animator.SetBool("IdleBlock", true);
@@ -311,6 +315,13 @@ public class Player_Controller : MonoBehaviour
     public void UltiSkillStart()
     {
         m_UltiSkill.SetActive(true);
+    }
+
+    public void UltiSkillFinish()
+    {
+        m_SecEffect.SetActive(true);
+
+        //m_UltiSkill.SetActive(false);
     }
 
     public void BosskillStart()

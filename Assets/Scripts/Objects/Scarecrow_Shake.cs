@@ -17,8 +17,10 @@ public class Scarecrow_Shake : MonoBehaviour
 
     // ==============================
 
-    public int HitCount;
-    public GameObject dialogwindow;
+    public int HitCount; // 튜토리얼 조건
+    public GameObject dialogwindow; // 대화창
+
+    public GameObject PlayerBomb; // 플레이어 이펙트
     
     void Start()
     {
@@ -36,6 +38,9 @@ public class Scarecrow_Shake : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
+            //PlayerBomb.SetActive(true);
+            Instantiate(PlayerBomb, transform.position + new Vector3(0,3f,0), Quaternion.identity);
+
             ++HitCount;
             
             Shake_it();

@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Player_UltiSkill : MonoBehaviour
 {
-    public GameObject Sec_Effect;
-
+    public GameObject BG_Eff;
 
     void Start()
     {
-        Invoke("On_Eff", 0.3f);
-
-        Invoke("End_UltiSkill", 15);
+        
     }
 
     void Update()
@@ -19,12 +16,12 @@ public class Player_UltiSkill : MonoBehaviour
         
     }
 
-    void On_Eff()
+    public void End_BG_Eff()
     {
-        Sec_Effect.SetActive(true);
+        BG_Eff.SetActive(false);
     }
 
-    void End_UltiSkill()
+    public void End_Sec_Eff()
     {
         this.gameObject.SetActive(false);
     }

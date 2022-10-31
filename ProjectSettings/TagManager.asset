@@ -10,6 +10,7 @@ TagManager:
   - PlayerParring
   - EnemyAttack
   - ParriedArrow
+  - PlayerUltiSkill
   layers:
   - Default
   - TransparentFX

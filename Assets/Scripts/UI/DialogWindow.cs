@@ -15,9 +15,12 @@ public class DialogWindow : MonoBehaviour
     public string next_text;
     private int DialogCount;
 
+    private string tutorial_zero_text = "다음은 대쉬와 점프를 해보거라. 대쉬는 (Shift)버튼, 점프는 (Space)버튼을 입력하면 사용할 수 있다.";
+    public bool Dialogplus = false; // 대화 더 하는지
     public bool CurrentDialogEnd = false; // 현재 대화 끗
     bool NextScene = false; // 다음씬으로 가는가
-    public int NextSceneNumber = 1;
+    public int NextSceneNumber = 1; // 다음 씬 번호
+
 
     void Start()
     {
@@ -33,8 +36,18 @@ public class DialogWindow : MonoBehaviour
         if(CurrentDialogEnd)
         {
             dialogText.text = "";
-            StartCoroutine(Typing(next_text));
-            NextScene = true;
+
+            if(Dialogplus)
+            {
+                StartCoroutine(Typing(tutorial_zero_text));
+            }
+            else
+            {
+                StartCoroutine(Typing(next_text));
+                NextScene = true;
+            }
+
+            Dialogplus = false;
             CurrentDialogEnd = false;
         }
     }

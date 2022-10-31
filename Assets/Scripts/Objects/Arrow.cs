@@ -12,6 +12,8 @@ public class Arrow : MonoBehaviour
     public float speed = 10.0f;
     public float lifeTime = 3.0f;
 
+    public GameObject PlayerBomb; // 플레이어 이펙트
+
     private void Start()
     {
         m_sprite = GetComponent<SpriteRenderer>();
@@ -28,6 +30,8 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("PlayerParring"))
         {
+            Instantiate(PlayerBomb, transform.position, Quaternion.identity);
+
             gameObject.tag = "ParriedArrow";
 
             dir = Vector3.right;

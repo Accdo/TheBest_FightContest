@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 550295044846124445}
   - component: {fileID: 550295044846124434}
   - component: {fileID: 550295044846124435}
-  - component: {fileID: 550295044846124432}
+  - component: {fileID: 8448600701663805999}
   m_Layer: 0
   m_Name: Boss_Skill
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &550295044846124432
+--- !u!114 &8448600701663805999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
