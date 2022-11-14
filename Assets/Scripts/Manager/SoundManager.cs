@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
-
+    
     public static SoundManager Instance
     {
         get
         {
-
             if (instance == null)
             {
                 instance = FindObjectOfType<SoundManager>();
@@ -28,12 +27,13 @@ public class SoundManager : MonoBehaviour
     public float masterVolumeBGM = 1f;
 
     [SerializeField]
-    private AudioClip mainBgmAudioClip; //메인화면에서 사용할 BGM
+    private AudioClip TutorialBgmAudioClip; // 튜토리얼 배경음
     [SerializeField]
-    private AudioClip adventureBgmAudioClip; //어드벤쳐씬에서 사용할 BGM
+    private AudioClip BattleBgmAudioClip; // 튜토리얼 배경음
+
 
     [SerializeField]
-    private AudioClip[] sfxAudioClips; //효과음들 지정
+    private AudioClip[] sfxAudioClips; //효과음들
 
     Dictionary<string, AudioClip> audioClipsDic = new Dictionary<string, AudioClip>(); //효과음 딕셔너리
     // AudioClip을 Key,Value 형태로 관리하기 위해 딕셔너리 사용
@@ -46,8 +46,11 @@ public class SoundManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject); //여러 씬에서 사용할 것.
 
-        bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
-        sfxPlayer = GameObject.Find("SFXSoundPlayer").GetComponent<AudioSource>();
+        //bgmPlayer = GameObject.Find("BGMSoundPlayer").GetComponent<AudioSource>();
+        //sfxPlayer = GameObject.Find("SFXSoundPlayer").GetComponent<AudioSource>();
+        
+        bgmPlayer = GetComponentsInChildren<AudioSource>()[0];
+        sfxPlayer = GetComponentsInChildren<AudioSource>()[1];
 
         foreach (AudioClip audioclip in sfxAudioClips)
         {
@@ -63,7 +66,7 @@ public class SoundManager : MonoBehaviour
             Debug.Log(name + " is not Contained audioClipsDic");
             return;
         }
-        sfxPlayer.PlayOneShot(audioClipsDic[name], volume * masterVolumeSFX);
+        sfxPlayer.PlayOneShot(audioClipsDic[name], volume * masterVolumeSFX); // 일반 Play와 다르게 중첩 가능
     }
 
     //BGM 사운드 재생 : 볼륨을 선택적 매개변수로 지정
@@ -72,16 +75,19 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정
         bgmPlayer.volume = volume * masterVolumeBGM;
 
-        if (SceneManager.GetActiveScene().name == "Main")
+        if (SceneManager.GetActiveScene().name == "Tutorial_CutScene")
         {
-            bgmPlayer.clip = mainBgmAudioClip;
+            bgmPlayer.clip = BattleBgmAudioClip;
             bgmPlayer.Play();
         }
-        else if (SceneManager.GetActiveScene().name == "Adventure")
+        else
         {
-            bgmPlayer.clip = adventureBgmAudioClip;
+            bgmPlayer.clip = TutorialBgmAudioClip;
             bgmPlayer.Play();
         }
-        //현재 씬에 맞는 BGM 재생
+
+        
     }
+
+
 }
