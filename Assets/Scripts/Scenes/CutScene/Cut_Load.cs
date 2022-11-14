@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Cut_Load : MonoBehaviour
 {
@@ -31,7 +30,7 @@ public class Cut_Load : MonoBehaviour
             ++sprite_Num;
 
             if(sprite_Num > 2)
-                SceneManager.LoadScene(NextSceneNumber);
+                StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(NextSceneNumber));
             else
                 spriteRenderer.sprite = sprite[sprite_Num];
         }

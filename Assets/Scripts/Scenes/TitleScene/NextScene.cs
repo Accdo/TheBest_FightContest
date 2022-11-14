@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
@@ -19,7 +18,8 @@ public class NextScene : MonoBehaviour
 
     public void SceneChange()
     {
-        SceneManager.LoadScene(NextSceneNumber);
+        Debug.Log("SceneChange");
+        StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(NextSceneNumber));
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

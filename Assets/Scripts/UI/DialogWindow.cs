@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DialogWindow : MonoBehaviour
@@ -65,20 +64,24 @@ public class DialogWindow : MonoBehaviour
     {
         if(NextScene)
         {
-            SceneManager.LoadScene(NextSceneNumber);
-        }
-
-        if(sta.Length > ++DialogCount) // 다음 번쨰 배열이 배열길이보다 길떄
-        {
-            dialogText.text = "";
-            StartCoroutine(Typing(sta[DialogCount]));
+            StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(NextSceneNumber));
         }
         else
         {
-            player_con.enabled = true; // 플레이어 활성화
-
-            CurrentDialogEnd = true;
-            this.gameObject.SetActive(false); // 창 닫기
+            if(sta.Length > ++DialogCount) // 다음 번쨰 배열이 배열길이보다 길떄
+            {
+                dialogText.text = "";
+                StartCoroutine(Typing(sta[DialogCount]));
+            }
+            else
+            {
+                player_con.enabled = true; // 플레이어 활성화
+    
+                CurrentDialogEnd = true;
+                this.gameObject.SetActive(false); // 창 닫기
+            }
         }
+
+        
     }
 }

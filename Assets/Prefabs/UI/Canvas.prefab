@@ -33,7 +33,7 @@ Transform:
   - {fileID: 1228944666791284615}
   - {fileID: 3478685403555320142}
   m_Father: {fileID: 8675049294361968006}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4006002168598723970
 MonoBehaviour:
@@ -544,7 +544,7 @@ RectTransform:
   - {fileID: 8447208702432334819}
   - {fileID: 4041521475111615931}
   m_Father: {fileID: 8675049294361968006}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -578,6 +578,7 @@ MonoBehaviour:
     \uC55E\uC5D0\uC788\uB294 \uD5C8\uC218\uC544\uBE44\uB97C \uACF5\uACA9\uD574\uBCF4\uAC70\uB77C"
   - "\uD5C8\uC218\uC544\uBE44\uB97C 10\uB300 \uB54C\uB824\uBCF4\uC544\uB77C!"
   next_text: "\uC798\uD588\uB2E4! \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC9C0!"
+  Dialogplus: 0
   CurrentDialogEnd: 0
   NextSceneNumber: 2
 --- !u!114 &8675049293242718494
@@ -1043,8 +1044,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8675049293242718495}
   - {fileID: 6148059811140468808}
+  - {fileID: 8675049293242718495}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
