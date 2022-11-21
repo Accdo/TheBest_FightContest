@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6831774359729854981}
   m_Layer: 0
-  m_Name: test_skil_pos
+  m_Name: Basic_skill_pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2657750022618737892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3, y: 0.85, z: 0}
+  m_LocalPosition: {x: 13, y: -3.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -215,15 +215,10 @@ MonoBehaviour:
   m_ParringSensor: {fileID: 6583842408840037289}
   m_UltiSkill: {fileID: 0}
   m_SecEffect: {fileID: 0}
-  TestSkill: {fileID: 0}
-  TS_pos: {fileID: 6831774359729854981}
+  B_Skill: {fileID: 5022897622840881046, guid: 015a7748495ec484aa829914c63c5386, type: 3}
+  B_Skill_pos: {fileID: 6831774359729854981}
   player_ui: {fileID: 0}
   shadow_player: {fileID: 3278008964030868724}
-  audioAttack1: {fileID: 8300000, guid: 54bc37a741fa1db4a869ce324d5acc59, type: 3}
-  audioAttack2: {fileID: 8300000, guid: edfa1d8bbb6e2ca4f91a84706c5b7ece, type: 3}
-  audioAttack3: {fileID: 8300000, guid: 18edb532f8be71e4e8ce872b8a4d6db5, type: 3}
-  audioAttack4: {fileID: 8300000, guid: 84ac2e10277ccb642ab7d179945a69cc, type: 3}
-  audioParring: {fileID: 8300000, guid: 74ad91b8358ae7344bcec0761c5005d1, type: 3}
 --- !u!95 &6583842408836293285
 Animator:
   serializedVersion: 4

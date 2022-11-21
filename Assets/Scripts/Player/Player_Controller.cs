@@ -41,8 +41,6 @@ public class Player_Controller : MonoBehaviour
     float Hit_Timer = 0.0f; // 패링 무적 시간
     bool GetHit = false; // 피격 얻음
 
-    float AlphaRedTime = 0.0f; // 알파값 붉어지는 시간
-
     float Parring_Timer = 0.0f; // 패링 타이머
     bool can_Parring = true; // 패링을 할수 있는가
 
@@ -55,8 +53,9 @@ public class Player_Controller : MonoBehaviour
     public GameObject m_SecEffect; // 두번쨰 레이저
     bool state_Ulti = true; // 궁극기 상태 true : 기본 배경, false : 궁극기 배경
 
-    public GameObject TestSkill; // 보스2 테스트 스킬
-    public Transform TS_pos; // 테스트 스킬 생성 좌표
+    public GameObject B_Skill; // 기본 스킬
+    public Transform B_Skill_pos; // 기본 스킬 생성 좌표
+    float B_Skill_Timer; // 기본스킬 타이머
 
     public Player_UI player_ui;
 
@@ -77,7 +76,8 @@ public class Player_Controller : MonoBehaviour
         m_AttackSensor.SetActive(false); // 공격 반경 비활성화
         m_ParringSensor.SetActive(false); // 패링 반경 비활성화
         m_UltiSkill.SetActive(false); // 패링 반경 비활성화
-        TestSkill.SetActive(false);
+
+        B_Skill_Timer = 5.0f;
     }
 
     void Update()
@@ -123,8 +123,8 @@ public class Player_Controller : MonoBehaviour
 
             m_AttackSensor.transform.localPosition = new Vector3(0.8f, 0.8f, 0.0f);
 
-            TS_pos.localPosition = new Vector3(1.3f, 0.85f, 0.0f);
-            TestSkill.transform.localRotation  = Quaternion.Euler(0, 0, 0);
+            B_Skill_pos.localPosition = new Vector3(13f, -3.4f, 0.0f);
+            B_Skill.transform.localRotation  = Quaternion.Euler(0, 0, 0);
         }
         else if (inputX < 0) // 왼쪽?
         {
@@ -133,8 +133,8 @@ public class Player_Controller : MonoBehaviour
 
             m_AttackSensor.transform.localPosition = new Vector3(-0.8f, 0.8f, 0.0f);
 
-            TS_pos.localPosition = new Vector3(-1.3f, 0.85f, 0.0f);
-            TestSkill.transform.localRotation  = Quaternion.Euler(0, 180, 0);
+            B_Skill_pos.localPosition = new Vector3(-13f, -3.4f, 0.0f);
+            B_Skill.transform.localRotation  = Quaternion.Euler(0, 180, 0);
         }
 
         // Move
@@ -166,6 +166,8 @@ public class Player_Controller : MonoBehaviour
 
         // 애니메이션 ============================================================================
 
+        B_Skill_Timer += Time.deltaTime;
+
         //Attack
         if (Input.GetKeyDown(KeyCode.Z) && m_timeSinceAttack > 0.25f && !m_rolling && !GetHit)
         {
@@ -187,8 +189,24 @@ public class Player_Controller : MonoBehaviour
             m_timeSinceAttack = 0.0f;
         }
 
-        // UltiSkill
+
+        // BasicSkill
         else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
+        {
+            if(B_Skill_Timer >= 5.0f)
+            {
+                m_animator.SetTrigger("BasicSkill");
+                SoundManager.Instance.PlaySFXSound("Atk1", 0.5f);
+
+                m_mp -= 10.0f;
+                player_ui.GivePlayerMp(m_mp);
+
+                B_Skill_Timer = 0.0f;
+            }
+        }
+
+        // UltiSkill
+        else if (Input.GetKeyDown(KeyCode.V) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
         {
             if(state_Ulti) // 기본 배경, 궁극기 쓰기전
             {
@@ -327,19 +345,13 @@ public class Player_Controller : MonoBehaviour
         //m_UltiSkill.SetActive(false);
     }
 
-    public void BosskillStart()
+    public void BasickillStart()
     {
-        TestSkill.transform.position = TS_pos.position;
-        TestSkill.SetActive(true);
-    }
+        //B_Skill.transform.position = B_Skill_pos.position;
 
-    // private void OnCollisionEnter2D(Collision2D other) {
-    //     if(other.gameObject.CompareTag("EnemyAttack"))
-    //     {
-    //         Debug.Log("Hit");
-    //         GetHit = true;
-    //     }
-    // }
+        Instantiate(B_Skill, B_Skill_pos.position, Quaternion.identity);
+        //B_Skill.SetActive(true);
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("EnemyAttack"))
@@ -360,14 +372,4 @@ public class Player_Controller : MonoBehaviour
             GetHit = true;
         }
     }
-
-    // public void GivePlayerHp(float _hp)
-    // {
-    //     _hp = m_hp;
-    // }
-
-    // public void GivePlayerMp(float _mp)
-    // {
-    //     _mp = m_mp;
-    // }
 }

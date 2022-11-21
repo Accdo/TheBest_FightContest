@@ -17,6 +17,9 @@ public class MainScript : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 }

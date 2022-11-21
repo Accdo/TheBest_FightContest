@@ -11,6 +11,7 @@ TagManager:
   - EnemyAttack
   - ParriedArrow
   - PlayerUltiSkill
+  - PlayerBasicSkill
   layers:
   - Default
   - TransparentFX

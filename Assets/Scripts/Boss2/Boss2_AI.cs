@@ -6,11 +6,11 @@ public class Boss2_AI : MonoBehaviour
 {
     [SerializeField] float m_hp = 100;
 
-    [SerializeField] float m_speed = 4.0f; // ÀÌµ¿¼Óµµ
-    [SerializeField] float m_dashspeed = 15.0f; // ÀÌµ¿¼Óµµ
+    [SerializeField] float m_speed = 4.0f; // ï¿½Ìµï¿½ï¿½Óµï¿½
+    [SerializeField] float m_dashspeed = 15.0f; // ï¿½Ìµï¿½ï¿½Óµï¿½
 
-    private Animator m_animator; // ¾Ö´Ï¸ÞÀÌÅÍ
-    private Rigidbody2D m_body2d; // Rigidbody ¿òÁ÷ÀÓ °ü·Ã
+    private Animator m_animator; // ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½
+    private Rigidbody2D m_body2d; // Rigidbody ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private SpriteRenderer m_spriterend;
 
     // ==========================================================
@@ -24,13 +24,18 @@ public class Boss2_AI : MonoBehaviour
     public GameObject m_AttackSensor;
 
     // ==========================================================
-    bool GetHit = false; // ÇÇ°Ý ¾òÀ½
-    float Hit_Timer = 0.0f; // ÆÐ¸µ ¹«Àû ½Ã°£
+    bool GetHit = false; // ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½
+    float Hit_Timer = 0.0f; // ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 
-    public Boss_UI boss_ui; // º¸½º UI
-    public GameObject PlayerBomb; // ÇÃ·¹ÀÌ¾î ÀÌÆåÆ®
+    public Boss_UI boss_ui; // ï¿½ï¿½ï¿½ï¿½ UI
+    public GameObject PlayerBomb; // 
+    public GameObject PlayerBasicSkill; // 
 
-    bool IsDie = false; //Á×À½
+    bool IsDie = false; //ï¿½ï¿½ï¿½ï¿½
+
+    // ==========================================================
+
+
 
     void Start()
     {
@@ -38,7 +43,7 @@ public class Boss2_AI : MonoBehaviour
         m_body2d = GetComponent<Rigidbody2D>();
         m_spriterend = GetComponent<SpriteRenderer>();
 
-        m_AttackSensor.SetActive(false); // °ø°Ý ¹Ý°æ ºñÈ°¼ºÈ­
+        m_AttackSensor.SetActive(false); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
     }
 
     Color color = new Color32(255,255,255,255);
@@ -51,7 +56,7 @@ public class Boss2_AI : MonoBehaviour
         }
         else
         {
-            if(GetHit) // ¸Â±â
+            if(GetHit) // ï¿½Â±ï¿½
             {
                 //StartCoroutine(OnHeatTime());
 
@@ -83,18 +88,18 @@ public class Boss2_AI : MonoBehaviour
         if(pattern_timer1 >= 1.5f)
         {
             m_animator.SetBool("Attack", false);
-            m_animator.SetInteger("Pattern_State1", 1); // ´Þ¸®±â
+            m_animator.SetInteger("Pattern_State1", 1); // ï¿½Þ¸ï¿½ï¿½ï¿½
 
             m_speed = 4f;
             
             if(pattern_timer1 >= 3.5f)
             {
-                m_animator.SetInteger("Pattern_State1", 2); // ´ë½¬
+                m_animator.SetInteger("Pattern_State1", 2); // ï¿½ë½¬
                 m_speed = m_dashspeed;
 
                 if(DashFinish && pattern_timer1 >= 3.6f)
                 {
-                    m_animator.SetBool("Attack", true); // °ø°Ý
+                    m_animator.SetBool("Attack", true); // ï¿½ï¿½ï¿½ï¿½
 
                     m_speed = 0;
 
@@ -104,13 +109,13 @@ public class Boss2_AI : MonoBehaviour
         }
         
         
-        if(Traget_Player.position.x > transform.position.x) // ¿ÞÂÊ ¹æÇâ º¸±â
+        if(Traget_Player.position.x > transform.position.x) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             m_spriterend.flipX = true;
 
             m_AttackSensor.transform.localPosition = new Vector3(0.3f, 0.0f, 0.0f);
         }
-        else if(Traget_Player.position.x < transform.position.x) // ¿À¸¥ÂÊ ¹æÇâ º¸±â
+        else if(Traget_Player.position.x < transform.position.x) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             m_spriterend.flipX = false;
 
@@ -188,6 +193,19 @@ public class Boss2_AI : MonoBehaviour
                 Debug.Log("Hit");
                 StartCoroutine(OnHeatTime());
     
+                Hit_Timer = 0.0f;
+            }
+
+            if(other.gameObject.CompareTag("PlayerBasicSkill"))
+            {
+                m_hp -= 20.0f;
+                boss_ui.GiveBossHp(m_hp);
+
+                Instantiate(PlayerBasicSkill, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                
+                Debug.Log("BasicHit");
+                StartCoroutine(OnHeatTime());
+                
                 Hit_Timer = 0.0f;
             }
         }
