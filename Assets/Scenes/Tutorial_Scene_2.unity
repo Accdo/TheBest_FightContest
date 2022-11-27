@@ -690,68 +690,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1668240956
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 550295044846124433, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_Name
-      value: Boss_Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 550295044846124445, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
---- !u!1 &1668240957 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 550295044846124433, guid: aa16c5d1695bd8a4dba6fba373a0ffa4, type: 3}
-  m_PrefabInstance: {fileID: 1668240956}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1702913151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,7 +762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675049294361968006, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8675049294361968006, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -917,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1845326560657803272, guid: 0968b7ce056c56a4b965409ff6c4c366, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1845326560657803272, guid: 0968b7ce056c56a4b965409ff6c4c366, type: 3}
       propertyPath: m_LocalPosition.x
@@ -974,7 +912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4325658156165753164, guid: 2ce508bb9bd5d0d4cbac9c64f3a5443e, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4325658156165753164, guid: 2ce508bb9bd5d0d4cbac9c64f3a5443e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1386,7 +1324,7 @@ PrefabInstance:
     - target: {fileID: 6583842408836293287, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: TestSkill
       value: 
-      objectReference: {fileID: 1668240957}
+      objectReference: {fileID: 0}
     - target: {fileID: 6583842408836293287, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: player_ui
       value: 

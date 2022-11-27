@@ -175,7 +175,8 @@ public class Boss2_AI : MonoBehaviour
                 m_hp -= 2.0f;
                 boss_ui.GiveBossHp(m_hp);
     
-                Instantiate(PlayerBomb, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                //Instantiate(PlayerBomb, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
                 Debug.Log("Hit");
                 StartCoroutine(OnHeatTime());
@@ -188,7 +189,8 @@ public class Boss2_AI : MonoBehaviour
                 m_hp -= 30.0f;
                 boss_ui.GiveBossHp(m_hp);
     
-                Instantiate(PlayerBomb, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                //Instantiate(PlayerBomb, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
                 Debug.Log("Hit");
                 StartCoroutine(OnHeatTime());
@@ -201,7 +203,8 @@ public class Boss2_AI : MonoBehaviour
                 m_hp -= 20.0f;
                 boss_ui.GiveBossHp(m_hp);
 
-                Instantiate(PlayerBasicSkill, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                //Instantiate(PlayerBasicSkill, transform.position + new Vector3(0,0,0), Quaternion.identity);
+                EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);
                 
                 Debug.Log("BasicHit");
                 StartCoroutine(OnHeatTime());

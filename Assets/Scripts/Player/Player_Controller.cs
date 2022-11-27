@@ -336,21 +336,19 @@ public class Player_Controller : MonoBehaviour
     public void UltiSkillStart()
     {
         m_UltiSkill.SetActive(true);
+        //EffectManager.Instance.PlayEffect("Effect_BG");
     }
 
     public void UltiSkillFinish()
     {
         m_SecEffect.SetActive(true);
-
-        //m_UltiSkill.SetActive(false);
+        //EffectManager.Instance.PlayEffect("SecondLager");
     }
 
     public void BasickillStart()
     {
-        //B_Skill.transform.position = B_Skill_pos.position;
-
-        Instantiate(B_Skill, B_Skill_pos.position, Quaternion.identity);
-        //B_Skill.SetActive(true);
+        //Instantiate(B_Skill, B_Skill_pos.position, Quaternion.identity);
+        EffectManager.Instance.PlayEffect("Basic_Skill_Fog", B_Skill_pos.position);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

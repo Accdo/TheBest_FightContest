@@ -1235,7 +1235,7 @@ Transform:
   - {fileID: 968703583}
   - {fileID: 1064523129}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1563152920
 MonoBehaviour:
@@ -1466,7 +1466,7 @@ Transform:
   - {fileID: 53015587}
   - {fileID: 1745749124}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1605406693
 BoxCollider2D:
@@ -1970,7 +1970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6583842408836293283, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6583842408836293283, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: m_LocalPosition.x
