@@ -1215,7 +1215,8 @@ PrefabInstance:
       propertyPath: audioParring
       value: 
       objectReference: {fileID: 8300000, guid: 74ad91b8358ae7344bcec0761c5005d1, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2866665092118614152, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
 --- !u!1001 &6930192747197115266
 PrefabInstance:
