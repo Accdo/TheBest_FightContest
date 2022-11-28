@@ -357,6 +357,8 @@ public class Player_Controller : MonoBehaviour
             m_hp -= 10.0f;
             player_ui.GivePlayerHp(m_hp);
 
+            EffectManager.Instance.PlayEffect("eff_boss2_atk_hit", transform.position + new Vector3(0,-1,0));
+
             StartCoroutine(OnHeatTime());
             GetHit = true;
         }

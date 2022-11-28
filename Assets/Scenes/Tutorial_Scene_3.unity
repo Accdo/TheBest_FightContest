@@ -608,7 +608,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025660634, y: 0.14370221}
+  m_Offset: {x: -0.06798015, y: 0.09770322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -619,7 +619,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.46661282, y: 0.49665952}
+  m_Size: {x: 0.4961837, y: 0.5886575}
   m_EdgeRadius: 0
 --- !u!4 &968703583
 Transform:
@@ -1255,8 +1255,6 @@ MonoBehaviour:
   Traget_Player: {fileID: 1631076464}
   m_AttackSensor: {fileID: 968703580}
   boss_ui: {fileID: 2083536806}
-  PlayerBomb: {fileID: 8232288785963626355, guid: 8c84feceb246f4d47914cc10e27d80f4, type: 3}
-  PlayerBasicSkill: {fileID: 1092507375095271447, guid: 67948a65d291611448d6f69604e3353a, type: 3}
 --- !u!1001 &1576050000
 PrefabInstance:
   m_ObjectHideFlags: 0

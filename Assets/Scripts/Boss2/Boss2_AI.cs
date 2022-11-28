@@ -28,8 +28,6 @@ public class Boss2_AI : MonoBehaviour
     float Hit_Timer = 0.0f; // �и� ���� �ð�
 
     public Boss_UI boss_ui; // ���� UI
-    public GameObject PlayerBomb; // 
-    public GameObject PlayerBasicSkill; // 
 
     bool IsDie = false; //����
 
@@ -49,7 +47,6 @@ public class Boss2_AI : MonoBehaviour
     Color color = new Color32(255,255,255,255);
     void Update()
     {
-
         if(m_hp <= 0.0f)
         {
             m_animator.SetTrigger("Die");
@@ -58,8 +55,6 @@ public class Boss2_AI : MonoBehaviour
         {
             if(GetHit) // �±�
             {
-                //StartCoroutine(OnHeatTime());
-
                 Hit_Timer += Time.deltaTime;
                 if(Hit_Timer >= 1.0f)
                 {
@@ -123,6 +118,16 @@ public class Boss2_AI : MonoBehaviour
         }
     }
 
+    void Shield_Pattern()
+    {
+
+    }
+
+    void UltiSkll_Pattern()
+    {
+
+    }
+
     void DashEnd()
     {
         DashFinish = true;
@@ -175,11 +180,11 @@ public class Boss2_AI : MonoBehaviour
                 m_hp -= 2.0f;
                 boss_ui.GiveBossHp(m_hp);
     
-                //Instantiate(PlayerBomb, transform.position + new Vector3(0,0,0), Quaternion.identity);
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
                 Debug.Log("Hit");
-                StartCoroutine(OnHeatTime());
+                if(!IsDie)
+                    StartCoroutine(OnHeatTime());
     
                 Hit_Timer = 0.0f;
             }
@@ -189,11 +194,11 @@ public class Boss2_AI : MonoBehaviour
                 m_hp -= 30.0f;
                 boss_ui.GiveBossHp(m_hp);
     
-                //Instantiate(PlayerBomb, transform.position + new Vector3(0,0,0), Quaternion.identity);
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
                 Debug.Log("Hit");
-                StartCoroutine(OnHeatTime());
+                if(!IsDie)
+                    StartCoroutine(OnHeatTime());
     
                 Hit_Timer = 0.0f;
             }
@@ -203,11 +208,11 @@ public class Boss2_AI : MonoBehaviour
                 m_hp -= 20.0f;
                 boss_ui.GiveBossHp(m_hp);
 
-                //Instantiate(PlayerBasicSkill, transform.position + new Vector3(0,0,0), Quaternion.identity);
                 EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);
                 
                 Debug.Log("BasicHit");
-                StartCoroutine(OnHeatTime());
+                if(!IsDie)
+                    StartCoroutine(OnHeatTime());
                 
                 Hit_Timer = 0.0f;
             }
