@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect_End : MonoBehaviour
+public class Boss2_Shield2 : MonoBehaviour
 {
     void Start()
     {
@@ -14,13 +14,8 @@ public class Effect_End : MonoBehaviour
         
     }
 
-    public void Eff_End()
+    public void ShieldStand()
     {
-        Destroy(this.gameObject);
-    }
-
-    public void Eff_Thd_End()
-    {
-        Destroy(this.gameObject, 1.0f);
+        EffectManager.Instance.PlayEffect("eff_boss2_Shielding", transform.position);
     }
 }

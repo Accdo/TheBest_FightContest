@@ -32,8 +32,13 @@ public class Boss2_AI : MonoBehaviour
     bool IsDie = false; //����
 
     // ==========================================================
+    [SerializeField]
+    int Pattern_Count = 0;
 
+    bool IsShield = false; // 쉴드 상태인가
 
+    bool Shield_Start = false;
+    float Shield_Timer = 0.0f;
 
     void Start()
     {
@@ -62,8 +67,14 @@ public class Boss2_AI : MonoBehaviour
                     Hit_Timer = 0.0f;
                 }
             }
-            else{
-                Pattern1();
+            else
+            {
+                if(Pattern_Count >= 3)
+                {
+                    Shield_Pattern();
+                }
+                else
+                    Pattern1();
             }
         }
 
@@ -97,7 +108,7 @@ public class Boss2_AI : MonoBehaviour
                     m_animator.SetBool("Attack", true); // ����
 
                     m_speed = 0;
-
+                    ++Pattern_Count;
                     pattern_timer1 = 0.0f;
                 }
             }
@@ -120,7 +131,25 @@ public class Boss2_AI : MonoBehaviour
 
     void Shield_Pattern()
     {
+        Shield_Timer += Time.deltaTime;
 
+        if(!Shield_Start)
+        {
+            m_animator.SetBool("Shield_End", false);
+            m_animator.SetTrigger("Shield");
+            Shield_Start = true;
+        }
+
+        if(Shield_Timer >= 3.5f)
+        {
+            Pattern_Count = 0;
+            IsShield = false;
+
+            m_animator.SetBool("Shield_End", true);
+            Shield_Start = false;
+
+            Shield_Timer = 0.0f;
+        }
     }
 
     void UltiSkll_Pattern()
@@ -140,6 +169,17 @@ public class Boss2_AI : MonoBehaviour
     public void AttackEnd()
     {
         m_AttackSensor.SetActive(false);
+    }
+
+    public void ShieldStart()
+    {
+        EffectManager.Instance.PlayEffect("eff_boss2_Shield_start_", transform.position);
+
+        IsShield = true;
+    }
+    public void ShieldStand() // 안쓰는중
+    {
+        EffectManager.Instance.PlayEffect("eff_boss2_Shielding", transform.position);
     }
 
     public void BossDie()
@@ -173,7 +213,7 @@ public class Boss2_AI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
-        if(m_hp > 0.0f)
+        if(m_hp > 0.0f && !IsShield)
         {
             if(other.gameObject.CompareTag("PlayerAttack"))
             {
