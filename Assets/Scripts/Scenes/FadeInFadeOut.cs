@@ -25,22 +25,18 @@ public class FadeInFadeOut : MonoBehaviour
 
     private void Awake()
     {
-        // if (Instance != this)
-        // {
-        //     Destroy(this.gameObject);
-        // }
-        // DontDestroyOnLoad(this.gameObject); //¿©·¯ ¾À¿¡¼­ »ç¿ëÇÒ °Í.
+        
     }
     void Update()
     {
         
     }
 
-    //ÆäÀÌµå ÀÎ, ¹à¾ÆÁü
+    //ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½
     public IEnumerator FadeInStart()
     {
         FadePannel.SetActive(true);
-        for (float f = 1f; f >= 0; f -= 0.001f)
+        for (float f = 1f; f >= 0; f -= 0.01f)
         {
             Color c = FadePannel.GetComponent<Image>().color;
             c.a = f;
@@ -51,13 +47,12 @@ public class FadeInFadeOut : MonoBehaviour
         FadePannel.SetActive(false);
     }
     
-    //ÆäÀÌµå ¾Æ¿ô, ¾îµÎ¿öÁü
+    //ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½, ï¿½ï¿½Î¿ï¿½ï¿½ï¿½
     public IEnumerator FadeOutStart(int _sceneNum)
     {
         FadePannel.SetActive(true);
-        for (float f = 0f; f <= 1; f += 0.001f)
+        for (float f = 0f; f <= 1; f += 0.01f)
         {
-            Debug.Log(f);
             Color c = FadePannel.GetComponent<Image>().color;
             c.a = f;
             FadePannel.GetComponent<Image>().color = c;

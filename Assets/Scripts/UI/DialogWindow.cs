@@ -9,16 +9,16 @@ public class DialogWindow : MonoBehaviour
 
     public Player_Controller player_con;
 
-    // ¹®ÀÚ¿­
+    // ï¿½ï¿½ï¿½Ú¿ï¿½
     public string [] sta;
     public string next_text;
     private int DialogCount;
 
-    private string tutorial_zero_text = "´ÙÀ½Àº ´ë½¬¿Í Á¡ÇÁ¸¦ ÇØº¸°Å¶ó. ´ë½¬´Â (Shift)¹öÆ°, Á¡ÇÁ´Â (Space)¹öÆ°À» ÀÔ·ÂÇÏ¸é »ç¿ëÇÒ ¼ö ÀÖ´Ù.";
-    public bool Dialogplus = false; // ´ëÈ­ ´õ ÇÏ´ÂÁö
-    public bool CurrentDialogEnd = false; // ÇöÀç ´ëÈ­ ²ý
-    bool NextScene = false; // ´ÙÀ½¾ÀÀ¸·Î °¡´Â°¡
-    public int NextSceneNumber = 1; // ´ÙÀ½ ¾À ¹øÈ£
+    private string tutorial_zero_text = "Shiftê°€ ëŒ€ì‰¬";
+    public bool Dialogplus = false; // 
+    public bool CurrentDialogEnd = false; // 
+    bool NextScene = false; // 
+    public int NextSceneNumber = 1; // 
 
 
     void Start()
@@ -68,17 +68,17 @@ public class DialogWindow : MonoBehaviour
         }
         else
         {
-            if(sta.Length > ++DialogCount) // ´ÙÀ½ ¹ø¤Š ¹è¿­ÀÌ ¹è¿­±æÀÌº¸´Ù ±æ‹š
+            if(sta.Length > ++DialogCount) // 
             {
                 dialogText.text = "";
                 StartCoroutine(Typing(sta[DialogCount]));
             }
             else
             {
-                player_con.enabled = true; // ÇÃ·¹ÀÌ¾î È°¼ºÈ­
+                player_con.enabled = true; // 
     
                 CurrentDialogEnd = true;
-                this.gameObject.SetActive(false); // Ã¢ ´Ý±â
+                this.gameObject.SetActive(false); // 
             }
         }
 
