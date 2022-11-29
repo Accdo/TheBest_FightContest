@@ -186,6 +186,8 @@ public class Boss2_AI : MonoBehaviour
     {
         IsDie = true;
 
+        StopCoroutine(OnHeatTime());
+
         Destroy(this.gameObject, 2.0f);
     }
 
