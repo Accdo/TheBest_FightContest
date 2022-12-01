@@ -208,8 +208,6 @@ public class Boss2_AI : MonoBehaviour
 
         m_spriterend.color = new Color32(255,255,255,255);
 
-        // isUnBeatTime = false;
-
         yield return null;
     }
 
