@@ -40,6 +40,8 @@ public class Boss2_AI : MonoBehaviour
     bool Shield_Start = false;
     float Shield_Timer = 0.0f;
 
+    //bool NoNoHitTime = false; // 죽으면 히트 타임이 발생하지 않는다
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -196,6 +198,9 @@ public class Boss2_AI : MonoBehaviour
         int countTime = 0;
 
         while(countTime < 10){
+            if(IsDie)
+                break;
+
             if(countTime%2 == 0)
                 m_spriterend.color = new Color32(255,150,150,255);
             else
@@ -205,8 +210,8 @@ public class Boss2_AI : MonoBehaviour
 
             countTime++;
         }
-
-        m_spriterend.color = new Color32(255,255,255,255);
+        if(!IsDie)
+            m_spriterend.color = new Color32(255,255,255,255);
 
         yield return null;
     }
