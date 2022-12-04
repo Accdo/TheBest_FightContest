@@ -12,10 +12,8 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {   
-        Debug.Log("씨발");
         if (SceneManager.GetActiveScene().name == "Tutorial_Scene_0" || SceneManager.GetActiveScene().name == "Tutorial_CutScene")
         {
-            Debug.Log("씨발 왜 안나와");
             SoundManager.Instance.PlayBGMSound(0.2f);
         }
 
@@ -27,6 +25,11 @@ public class MainScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             SceneManager.LoadScene(4);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instance.Window_On("Pause_Window_panel");
         }
     }
 }

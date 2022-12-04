@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DialogWindow : MonoBehaviour
@@ -14,7 +15,7 @@ public class DialogWindow : MonoBehaviour
     public string next_text;
     private int DialogCount;
 
-    private string tutorial_zero_text = "Shift가 대쉬";
+    private string tutorial_zero_text = "Shift 키가 대쉬, Space 키가 점프다. 한번 해보거라";
     public bool Dialogplus = false; // 
     public bool CurrentDialogEnd = false; // 
     bool NextScene = false; // 
@@ -36,13 +37,14 @@ public class DialogWindow : MonoBehaviour
         {
             dialogText.text = "";
 
-            if(Dialogplus)
+            if(Dialogplus) // 더 있다면?
             {
                 StartCoroutine(Typing(tutorial_zero_text));
             }
             else
             {
                 StartCoroutine(Typing(next_text));
+
                 NextScene = true;
             }
 

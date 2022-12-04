@@ -199,7 +199,7 @@ public class Player_Controller : MonoBehaviour
                 SoundManager.Instance.PlaySFXSound("Atk1", 0.5f);
 
                 m_mp -= 10.0f;
-                player_ui.GivePlayerMp(m_mp);
+                player_ui.GivePlayerMp(m_mp, -10.0f);
 
                 B_Skill_Timer = 0.0f;
             }
@@ -214,7 +214,7 @@ public class Player_Controller : MonoBehaviour
                 SoundManager.Instance.PlaySFXSound("Atk3", 0.5f);
 
                 m_mp -= 20.0f;
-                player_ui.GivePlayerMp(m_mp);
+                player_ui.GivePlayerMp(m_mp, -20.0f);
 
                 state_Ulti = false;
             }
@@ -235,7 +235,7 @@ public class Player_Controller : MonoBehaviour
             can_Parring = false;
 
             m_mp -= 10.0f;
-            player_ui.GivePlayerMp(m_mp);
+            player_ui.GivePlayerMp(m_mp, -10.0f);
         }
 
         // Roll
@@ -355,7 +355,7 @@ public class Player_Controller : MonoBehaviour
         if(other.gameObject.CompareTag("EnemyAttack"))
         {
             m_hp -= 10.0f;
-            player_ui.GivePlayerHp(m_hp);
+            player_ui.GivePlayerHp(m_hp, -10.0f);
 
             EffectManager.Instance.PlayEffect("eff_boss2_atk_hit", transform.position + new Vector3(0,-1,0));
 
@@ -366,7 +366,7 @@ public class Player_Controller : MonoBehaviour
         if(other.gameObject.CompareTag("Arrow"))
         {
             m_hp -= 10.0f;
-            player_ui.GivePlayerHp(m_hp);
+            player_ui.GivePlayerHp(m_hp, -10.0f);
 
             StartCoroutine(OnHeatTime());
             GetHit = true;
