@@ -31,5 +31,7 @@ public class MainScript : MonoBehaviour
         {
             UIManager.Instance.Window_On("Pause_Window_panel");
         }
+
+        
     }
 }

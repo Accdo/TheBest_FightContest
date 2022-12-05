@@ -42,6 +42,8 @@ public class Boss2_AI : MonoBehaviour
 
     //bool NoNoHitTime = false; // 죽으면 히트 타임이 발생하지 않는다
 
+    public GameObject potal;
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -190,6 +192,7 @@ public class Boss2_AI : MonoBehaviour
 
         StopCoroutine(OnHeatTime());
 
+        potal.SetActive(true);
         Destroy(this.gameObject, 2.0f);
     }
 
