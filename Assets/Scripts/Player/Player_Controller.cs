@@ -189,6 +189,20 @@ public class Player_Controller : MonoBehaviour
             m_timeSinceAttack = 0.0f;
         }
 
+        // Heal
+        else if (Input.GetKeyDown(KeyCode.B) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
+        {
+            m_animator.SetTrigger("Heal");
+            EffectManager.Instance.PlayEffect("effect_player_heal", transform.position + new Vector3(-0.4f, -1.0f, 0.0f));
+            //SoundManager.Instance.PlaySFXSound("Faring", 0.5f); 사운드
+
+            m_mp -= 20.0f;
+            player_ui.GivePlayerMp(m_mp, -20.0f);
+
+            if(m_hp < 100)
+                m_hp += 20.0f;
+                player_ui.GivePlayerHp(m_hp, 20.0f);
+        }
 
         // BasicSkill
         else if (Input.GetKeyDown(KeyCode.C) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
