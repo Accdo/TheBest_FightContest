@@ -40,7 +40,11 @@ public class Boss2_AI : MonoBehaviour
     bool Shield_Start = false;
     float Shield_Timer = 0.0f;
 
-    //bool NoNoHitTime = false; // 죽으면 히트 타임이 발생하지 않는다
+    bool Charge_Start = false;
+    float Charge_Timer = 0.0f;
+
+    [SerializeField]
+    int Pattern_State = 1; // 1 shield 2 UltiSkill
 
     public GameObject potal;
 
@@ -75,7 +79,14 @@ public class Boss2_AI : MonoBehaviour
             {
                 if(Pattern_Count >= 3)
                 {
-                    Shield_Pattern();
+                    if(Pattern_State == 1)
+                    {
+                        Shield_Pattern();
+                    }
+                    else if(Pattern_State == 2)
+                    {
+                        UltiSkll_Pattern();
+                    }
                 }
                 else
                     Pattern1();
@@ -147,6 +158,7 @@ public class Boss2_AI : MonoBehaviour
         if(Shield_Timer >= 3.5f)
         {
             Pattern_Count = 0;
+            Pattern_State = 2;
             IsShield = false;
 
             m_animator.SetBool("Shield_End", true);
@@ -158,7 +170,24 @@ public class Boss2_AI : MonoBehaviour
 
     void UltiSkll_Pattern()
     {
+        Charge_Timer += Time.deltaTime;
 
+        if(!Charge_Start)
+        {
+            m_animator.SetTrigger("Charging");
+            Charge_Start = true;
+        }
+
+        if(Charge_Timer >= 2.0f)
+        {
+            Pattern_Count = 0;
+            Pattern_State = 1;
+
+            m_animator.SetTrigger("UltiShot");
+            Charge_Start = false;
+
+            Charge_Timer = 0.0f;
+        }
     }
 
     void DashEnd()
@@ -184,6 +213,21 @@ public class Boss2_AI : MonoBehaviour
     public void ShieldStand() // 안쓰는중
     {
         EffectManager.Instance.PlayEffect("eff_boss2_Shielding", transform.position);
+    }
+
+    public void ChargeStart()
+    {
+        EffectManager.Instance.PlayEffect("eff_boss2_charg1", transform.position, 2.0f);
+    }
+
+    public void UltiBombStart()
+    {
+        EffectManager.Instance.PlayEffect("eff_boss2_chargeBomb", transform.position);
+    }
+
+    public void UltiWaveStart()
+    {
+        
     }
 
     public void BossDie()

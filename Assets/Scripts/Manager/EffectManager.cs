@@ -10,6 +10,8 @@ public class EffectManager : MonoBehaviour
     private GameObject[] Eff_Array;
     Dictionary<string, GameObject> Eff_Dic = new Dictionary<string, GameObject>();
 
+    GameObject tempObj;
+
     public static EffectManager Instance
     {
         get
@@ -54,8 +56,21 @@ public class EffectManager : MonoBehaviour
             Debug.Log(name + " is not Contained Eff_Dic");
             return;
         }
-        Instantiate(Eff_Dic[name], _vec, Quaternion.identity);
+        Instantiate(Eff_Dic[name], _vec, Quaternion.identity);  
     }
+
+    public void PlayEffect(string name, Vector3 _vec, float _deathTime)
+    {
+        if (Eff_Dic.ContainsKey(name) == false)
+        {
+            Debug.Log(name + " is not Contained Eff_Dic");
+            return;
+        }
+        tempObj = Instantiate(Eff_Dic[name], _vec, Quaternion.identity);
+
+        Destroy(tempObj, _deathTime);
+    }
+
 
 
     void Start()
