@@ -16,13 +16,13 @@ public class Plyer_Chase_Cmra : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.x >= 16.1f)
+        if(transform.position.x >= 66.1f)
         {
-            transform.position = new Vector3(16.1f, 0, transform.position.z);
+            transform.position = new Vector3(66.1f, 0, transform.position.z);
 
-            if(player.transform.position.x < 10.0f)
+            if(player.transform.position.x < 60.0f)
             {
-                transform.position = new Vector3(16.09999f, 0, transform.position.z);
+                transform.position = new Vector3(66.09999f, 0, transform.position.z);
             }
         }
         else
