@@ -121,7 +121,7 @@ public class Player_Controller : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = 1;
 
-            m_AttackSensor.transform.localPosition = new Vector3(0.8f, 0.8f, 0.0f);
+            m_AttackSensor.transform.localPosition = new Vector3(8f, -4f, 0.0f);
 
             B_Skill_pos.localPosition = new Vector3(13f, -3.4f, 0.0f);
             B_Skill.transform.localRotation  = Quaternion.Euler(0, 0, 0);
@@ -131,7 +131,7 @@ public class Player_Controller : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = -1;
 
-            m_AttackSensor.transform.localPosition = new Vector3(-0.8f, 0.8f, 0.0f);
+            m_AttackSensor.transform.localPosition = new Vector3(-8f, -4f, 0.0f);
 
             B_Skill_pos.localPosition = new Vector3(-13f, -3.4f, 0.0f);
             B_Skill.transform.localRotation  = Quaternion.Euler(0, 180, 0);
@@ -143,6 +143,8 @@ public class Player_Controller : MonoBehaviour
         
         // 공중에 있을 시?
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
+
+        
 
         if(!can_Parring)
         {

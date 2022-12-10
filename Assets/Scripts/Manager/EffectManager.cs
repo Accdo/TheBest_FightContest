@@ -71,6 +71,18 @@ public class EffectManager : MonoBehaviour
         Destroy(tempObj, _deathTime);
     }
 
+    public GameObject PlayEffect_returnGameObj(string name, Vector3 _vec)
+    {
+        if (Eff_Dic.ContainsKey(name) == false)
+        {
+            Debug.Log(name + " is not Contained Eff_Dic");
+            return null;
+        }
+
+        return Instantiate(Eff_Dic[name], _vec, Quaternion.identity);  
+    }
+
+
 
 
     void Start()
