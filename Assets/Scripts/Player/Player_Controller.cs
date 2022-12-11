@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float m_mp = 100;
 
     [SerializeField] float m_speed = 4.0f; // 이동속도
-    [SerializeField] float m_jumpForce = 25.0f; // 점프 가속
+    [SerializeField] float m_jumpForce = 30.0f; // 점프 가속
     [SerializeField] float m_rollForce = 6.0f;
 
     private Animator m_animator; // 애니메이터
@@ -144,7 +144,7 @@ public class Player_Controller : MonoBehaviour
         // 공중에 있을 시?
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
-        
+
 
         if(!can_Parring)
         {
@@ -368,7 +368,7 @@ public class Player_Controller : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("EnemyAttack"))
+        if(other.gameObject.CompareTag("BossAttack"))
         {
             m_hp -= 10.0f;
             player_ui.GivePlayerHp(m_hp, -10.0f);
@@ -384,6 +384,15 @@ public class Player_Controller : MonoBehaviour
             m_hp -= 10.0f;
             player_ui.GivePlayerHp(m_hp, -10.0f);
 
+            StartCoroutine(OnHeatTime());
+            GetHit = true;
+        }
+
+        if(other.gameObject.CompareTag("WolfAttack"))
+        {
+            m_hp -= 10.0f;
+            player_ui.GivePlayerHp(m_hp, -10.0f);
+            
             StartCoroutine(OnHeatTime());
             GetHit = true;
         }

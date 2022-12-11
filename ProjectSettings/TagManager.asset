@@ -8,10 +8,11 @@ TagManager:
   - Monster
   - Arrow
   - PlayerParring
-  - EnemyAttack
   - ParriedArrow
   - PlayerUltiSkill
   - PlayerBasicSkill
+  - BossAttack
+  - WolfAttack
   layers:
   - Default
   - TransparentFX

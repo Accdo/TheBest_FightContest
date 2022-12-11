@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 968703581}
   m_Layer: 0
   m_Name: _AttackSensor
-  m_TagString: EnemyAttack
+  m_TagString: BossAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95f36b7b20739d45a2658df6452c007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hp: 100
+  m_hp: 300
   m_speed: 4
   m_dashspeed: 15
   Traget_Player: {fileID: 1631076464}

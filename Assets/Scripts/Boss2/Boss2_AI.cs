@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss2_AI : MonoBehaviour
 {
-    [SerializeField] float m_hp = 100;
+    [SerializeField] float m_hp = 300;
 
     [SerializeField] float m_speed = 4.0f; // �̵��ӵ�
     [SerializeField] float m_dashspeed = 15.0f; // �̵��ӵ�
@@ -24,8 +24,8 @@ public class Boss2_AI : MonoBehaviour
     public GameObject m_AttackSensor;
 
     // ==========================================================
-    bool GetHit = false; // �ǰ� ����
-    float Hit_Timer = 0.0f; // �и� ���� �ð�
+    bool GetHit = false;
+    float Hit_Timer = 0.0f;
 
     public Boss_UI boss_ui; // ���� UI
 
@@ -66,7 +66,7 @@ public class Boss2_AI : MonoBehaviour
         }
         else
         {
-            if(GetHit) // �±�
+            if(GetHit) 
             {
                 Hit_Timer += Time.deltaTime;
                 if(Hit_Timer >= 1.0f)
@@ -130,13 +130,13 @@ public class Boss2_AI : MonoBehaviour
         }
         
         
-        if(Traget_Player.position.x > transform.position.x) // ���� ���� ����
+        if(Traget_Player.position.x > transform.position.x)
         {
             m_spriterend.flipX = true;
 
             m_AttackSensor.transform.localPosition = new Vector3(0.3f, 0.0f, 0.0f);
         }
-        else if(Traget_Player.position.x < transform.position.x) // ������ ���� ����
+        else if(Traget_Player.position.x < transform.position.x)
         {
             m_spriterend.flipX = false;
 
@@ -274,6 +274,7 @@ public class Boss2_AI : MonoBehaviour
     
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
+                GetHit = true;
                 Debug.Log("Hit");
                 if(!IsDie)
                     StartCoroutine(OnHeatTime());
@@ -288,6 +289,7 @@ public class Boss2_AI : MonoBehaviour
     
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
+                GetHit = true;
                 Debug.Log("Hit");
                 if(!IsDie)
                     StartCoroutine(OnHeatTime());
@@ -302,6 +304,7 @@ public class Boss2_AI : MonoBehaviour
 
                 EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);
                 
+                GetHit = true;
                 Debug.Log("BasicHit");
                 if(!IsDie)
                     StartCoroutine(OnHeatTime());

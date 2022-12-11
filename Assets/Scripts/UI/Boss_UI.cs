@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Boss_UI : MonoBehaviour
 {
     public Image boss_hp;
-    float get_hp = 100;
+    float get_hp = 300;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class Boss_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        boss_hp.fillAmount = get_hp / 100.0f;
+        boss_hp.fillAmount = get_hp / 300.0f;
     }
 
     public void GiveBossHp(float _hp)
