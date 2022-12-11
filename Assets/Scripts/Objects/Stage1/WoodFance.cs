@@ -17,8 +17,12 @@ public class WoodFance : MonoBehaviour
     // rope trap On
     public GameObject rope_trap;
 
-    // ´Á´ë
+    // Wolf
     public GameObject wolf;
+
+    // BossBattle_Potal_Open
+
+    public GameObject Potal_Open;
 
     void Start()
     {
@@ -47,6 +51,7 @@ public class WoodFance : MonoBehaviour
                 {
                     rope_trap.SetActive(true);
                     wolf.SetActive(true);
+                    Potal_Open.SetActive(true);
                 }
             }
             IsHit = true;
