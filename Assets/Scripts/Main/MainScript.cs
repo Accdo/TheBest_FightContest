@@ -22,15 +22,10 @@ public class MainScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            SceneManager.LoadScene(6);
-        }
         if (Input.GetKeyDown(KeyCode.I))
         {
             SceneManager.LoadScene(4);
         }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UIManager.Instance.Window_On("Pause_Window_panel");

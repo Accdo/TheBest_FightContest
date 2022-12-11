@@ -9,7 +9,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float m_hp = 100;
     [SerializeField] float m_mp = 100;
 
-    [SerializeField] float m_speed = 4.0f; // 이동속도
+    [SerializeField] float m_speed = 8.0f; // 이동속도
     [SerializeField] float m_jumpForce = 30.0f; // 점프 가속
     [SerializeField] float m_rollForce = 6.0f;
 
@@ -198,12 +198,13 @@ public class Player_Controller : MonoBehaviour
             EffectManager.Instance.PlayEffect("effect_player_heal", transform.position + new Vector3(-0.4f, -1.0f, 0.0f));
             //SoundManager.Instance.PlaySFXSound("Faring", 0.5f); 사운드
 
-            m_mp -= 20.0f;
-            player_ui.GivePlayerMp(m_mp, -20.0f);
-
             if(m_hp < 100)
                 m_hp += 20.0f;
                 player_ui.GivePlayerHp(m_hp, 20.0f);
+
+            if (m_mp < 100)
+                m_mp += 20.0f;
+                player_ui.GivePlayerMp(m_mp, 20.0f);
         }
 
         // BasicSkill

@@ -28,8 +28,8 @@ public class Cut_Load : MonoBehaviour
             audioSource.Play();
 
             ++sprite_Num;
-
-            if(sprite_Num > 2)
+            
+            if (sprite_Num > sprite.Length-1)
                 StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(NextSceneNumber));
             else
                 spriteRenderer.sprite = sprite[sprite_Num];

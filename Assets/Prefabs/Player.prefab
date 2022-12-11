@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_hp: 100
   m_mp: 100
-  m_speed: 6
+  m_speed: 8
   m_jumpForce: 10
   m_rollForce: 15
   m_grounded: 1

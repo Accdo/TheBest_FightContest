@@ -21,12 +21,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial_CutScene.unity
     guid: f7646b0ae84246744a2fa8a667864158
   - enabled: 1
-    path: Assets/Scenes/Tutorial_Scene_3.unity
-    guid: 7f4cd9f88f7378248ae885a12869b605
+    path: Assets/Scenes/Stage0.unity
+    guid: cb854cae7574c4a41b73299a2bc53255
+  - enabled: 1
+    path: Assets/Scenes/Stage1_CutScene1.unity
+    guid: d27dc2836b8f7834c8113717e367e680
   - enabled: 1
     path: Assets/Scenes/Stage1.unity
     guid: c83548093ee33f84e8dc78f183b8caa8
   - enabled: 1
     path: Assets/Scenes/Stage2.unity
     guid: 73fc9ca1108c3644d8f97c53ee3dc9f0
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Scene_3.unity
+    guid: 7f4cd9f88f7378248ae885a12869b605
   m_configObjects: {}

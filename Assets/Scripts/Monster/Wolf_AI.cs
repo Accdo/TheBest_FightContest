@@ -82,7 +82,7 @@ public class Wolf_AI : MonoBehaviour
         {
             if (m_hp <= 100)
             {
-                m_hp += 10.0f * Time.deltaTime;
+                m_hp += 30.0f * Time.deltaTime;
                 boss_ui.GiveBossHp(m_hp);
             }
         }
@@ -217,12 +217,25 @@ public class Wolf_AI : MonoBehaviour
                 Hit_Timer = 0.0f;
             }
         }
+
+        if (other.gameObject.CompareTag("Stone"))
+        {
+            m_animator.SetTrigger("Die");
+        }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Stone"))
+    //    {
+    //        m_animator.SetTrigger("Die");
+    //    }
+    //}
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("HealRage"))
         {
-            Debug.Log("fuck");
             HealCheck = true;
         }
     }

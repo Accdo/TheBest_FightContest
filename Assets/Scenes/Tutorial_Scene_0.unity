@@ -978,7 +978,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8675049293242718491, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: next_text
-      value: 
+      value: "\uC798\uD588\uB2E4! \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC9C0!"
       objectReference: {fileID: 0}
     - target: {fileID: 8675049293242718491, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: Dialogplus
@@ -1023,15 +1023,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675049293242718491, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: next_text.Array.size
-      value: 0
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 8675049293242718491, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: next_text.Array.data[0]
-      value: "\uC798\uD588\uB2E4! \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC9C0."
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 8675049293242718491, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: next_text.Array.data[1]
-      value: "\uC798\uD588\uB2E4! \uC624\uB298 \uD6C8\uB828\uC740 \uB05D\uC774\uB2E4."
+      value: -98
       objectReference: {fileID: 0}
     - target: {fileID: 8675049294361968006, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: m_Pivot.x

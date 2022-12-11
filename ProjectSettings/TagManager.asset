@@ -15,6 +15,7 @@ TagManager:
   - WolfAttack
   - EnemyAttack
   - HealRage
+  - Stone
   layers:
   - Default
   - TransparentFX
