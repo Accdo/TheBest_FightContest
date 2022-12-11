@@ -22,6 +22,10 @@ public class MainScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            SceneManager.LoadScene(6);
+        }
         if (Input.GetKeyDown(KeyCode.I))
         {
             SceneManager.LoadScene(4);

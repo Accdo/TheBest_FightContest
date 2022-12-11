@@ -13,6 +13,8 @@ TagManager:
   - PlayerBasicSkill
   - BossAttack
   - WolfAttack
+  - EnemyAttack
+  - HealRage
   layers:
   - Default
   - TransparentFX

@@ -48,7 +48,6 @@ public class Player_UI : MonoBehaviour
         {
             if(current_mp >= get_mp)
             {
-                Debug.Log(current_mp);
                 current_mp -= increase_speed * Time.deltaTime;
             }
             else

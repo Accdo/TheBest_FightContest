@@ -1916,6 +1916,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss_hp: {fileID: 1426504793}
+  get_hp: 300
+  Full_hp: 300
+  WhoIs: Boss
 --- !u!1001 &550295043496454069
 PrefabInstance:
   m_ObjectHideFlags: 0
