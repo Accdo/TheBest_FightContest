@@ -224,14 +224,6 @@ public class Wolf_AI : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Stone"))
-    //    {
-    //        m_animator.SetTrigger("Die");
-    //    }
-    //}
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("HealRage"))
