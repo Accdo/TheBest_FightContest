@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 using Input = UnityEngine.Input;
 
 public class Player_Controller : MonoBehaviour
@@ -10,8 +11,8 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float m_mp = 100;
 
     [SerializeField] float m_speed = 8.0f; // 이동속도
-    [SerializeField] float m_jumpForce = 30.0f; // 점프 가속
-    [SerializeField] float m_rollForce = 6.0f;
+    [SerializeField] float m_jumpForce = 10.0f; // 점프 가속
+    [SerializeField] float m_rollForce = 20.0f;
 
     private Animator m_animator; // 애니메이터
     private Rigidbody2D m_body2d; // Rigidbody 움직임 관련
@@ -44,6 +45,8 @@ public class Player_Controller : MonoBehaviour
     float Parring_Timer = 0.0f; // 패링 타이머
     bool can_Parring = true; // 패링을 할수 있는가
 
+    bool NoDamage = false;
+
     float Rolling_Timer = 0.0f; // 구르기 타이머
     bool can_Rolling = true; // 굴러도 되는가
 
@@ -59,7 +62,7 @@ public class Player_Controller : MonoBehaviour
 
     public Player_UI player_ui;
 
-    public Shadow_Copy shadow_player;
+    bool IsDie = false;
 
     void Start()
     {
@@ -102,7 +105,6 @@ public class Player_Controller : MonoBehaviour
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
 
-            shadow_player.IsGround = true;
         }
 
         // 땅에 없
@@ -111,7 +113,6 @@ public class Player_Controller : MonoBehaviour
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
 
-            //shadow_player.IsGround = false;
         }
 
         float inputX = Input.GetAxis("Horizontal");
@@ -170,8 +171,19 @@ public class Player_Controller : MonoBehaviour
 
         B_Skill_Timer += Time.deltaTime;
 
+        //Die
+        if (m_hp <= 0.0f)
+        {
+            IsDie = true;
+            m_animator.SetTrigger("Die");
+
+            StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(SceneManager.GetActiveScene().buildIndex, 3.0f));
+
+            this.gameObject.GetComponent<Player_Controller>().enabled = false;
+        }
+
         //Attack
-        if (Input.GetKeyDown(KeyCode.Z) && m_timeSinceAttack > 0.25f && !m_rolling && !GetHit)
+        else if (Input.GetKeyDown(KeyCode.Z) && m_timeSinceAttack > 0.25f && !m_rolling && !GetHit)
         {
             m_currentAttack++;
 
@@ -195,10 +207,16 @@ public class Player_Controller : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.B) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
         {
             m_animator.SetTrigger("Heal");
-            EffectManager.Instance.PlayEffect("effect_player_heal", transform.position + new Vector3(-0.4f, -1.0f, 0.0f));
+
+            if (!m_sprite.flipX)
+                EffectManager.Instance.PlayEffect("effect_player_heal", transform.position + new Vector3(-0.4f, -1.0f, 0.0f));
+
+            if (m_sprite.flipX)
+                EffectManager.Instance.PlayEffect("effect_player_heal", transform.position + new Vector3(0.4f, -1.0f, 0.0f));
+
             //SoundManager.Instance.PlaySFXSound("Faring", 0.5f); 사운드
 
-            if(m_hp < 100)
+            if (m_hp < 100)
                 m_hp += 20.0f;
                 player_ui.GivePlayerHp(m_hp, 20.0f);
 
@@ -276,7 +294,6 @@ public class Player_Controller : MonoBehaviour
             m_body2d.AddForce(Vector2.up * m_jumpForce, ForceMode2D.Impulse);
             m_groundSensor.Disable(0.2f);
 
-            shadow_player.IsGround = false;
         }
 
         //Run
@@ -308,6 +325,7 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
+        
     }
 
     IEnumerator OnHeatTime()
@@ -315,7 +333,10 @@ public class Player_Controller : MonoBehaviour
         int countTime = 0;
 
         while(countTime < 10){
-            if(countTime%2 == 0)
+            if (IsDie)
+                break;
+
+            if (countTime%2 == 0)
                 m_sprite.color = new Color32(255,150,150,255);
             else
                 m_sprite.color = new Color32(255,50,50,255);
@@ -324,8 +345,8 @@ public class Player_Controller : MonoBehaviour
 
             countTime++;
         }
-
-        m_sprite.color = new Color32(255,255,255,255);
+        if (!IsDie)
+            m_sprite.color = new Color32(255,255,255,255);
 
         // isUnBeatTime = false;
 
@@ -344,10 +365,14 @@ public class Player_Controller : MonoBehaviour
     public void ParringStart()
     {
         m_ParringSensor.SetActive(true);
+
+        NoDamage = true;
     }
     public void ParringEnd()
     {
         m_ParringSensor.SetActive(false);
+
+        NoDamage = false;
     }
 
     public void UltiSkillStart()
@@ -369,33 +394,50 @@ public class Player_Controller : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("BossAttack"))
+
+        if(!NoDamage)
         {
-            m_hp -= 10.0f;
-            player_ui.GivePlayerHp(m_hp, -10.0f);
+            if (other.gameObject.CompareTag("Boss1_Attack"))
+            {
+                m_hp -= 5.0f;
+                player_ui.GivePlayerHp(m_hp, -5.0f);
 
-            EffectManager.Instance.PlayEffect("eff_boss2_atk_hit", transform.position + new Vector3(0,-1,0));
+                EffectManager.Instance.PlayEffect("eff_boss1_atkbomb", transform.position + new Vector3(0, -1, 0));
+                if (!IsDie)
+                    StartCoroutine(OnHeatTime());
+                GetHit = true;
+            }
 
-            StartCoroutine(OnHeatTime());
-            GetHit = true;
+
+            if (other.gameObject.CompareTag("Boss2_Attack"))
+            {
+                m_hp -= 10.0f;
+                player_ui.GivePlayerHp(m_hp, -10.0f);
+
+                EffectManager.Instance.PlayEffect("eff_boss2_atk_hit", transform.position + new Vector3(0, -1, 0));
+                if (!IsDie)
+                    StartCoroutine(OnHeatTime());
+                GetHit = true;
+            }
+
+            if (other.gameObject.CompareTag("Arrow"))
+            {
+                m_hp -= 10.0f;
+                player_ui.GivePlayerHp(m_hp, -10.0f);
+                if (!IsDie)
+                    StartCoroutine(OnHeatTime());
+                GetHit = true;
+            }
+
+            if (other.gameObject.CompareTag("WolfAttack"))
+            {
+                m_hp -= 10.0f;
+                player_ui.GivePlayerHp(m_hp, -10.0f);
+                if (!IsDie)
+                    StartCoroutine(OnHeatTime());
+                GetHit = true;
+            }
         }
-
-        if(other.gameObject.CompareTag("Arrow"))
-        {
-            m_hp -= 10.0f;
-            player_ui.GivePlayerHp(m_hp, -10.0f);
-
-            StartCoroutine(OnHeatTime());
-            GetHit = true;
-        }
-
-        if(other.gameObject.CompareTag("WolfAttack"))
-        {
-            m_hp -= 10.0f;
-            player_ui.GivePlayerHp(m_hp, -10.0f);
-            
-            StartCoroutine(OnHeatTime());
-            GetHit = true;
-        }
+        
     }
 }

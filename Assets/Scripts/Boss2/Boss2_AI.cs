@@ -75,22 +75,20 @@ public class Boss2_AI : MonoBehaviour
                     Hit_Timer = 0.0f;
                 }
             }
-            else
+
+            if (Pattern_Count >= 3)
             {
-                if(Pattern_Count >= 3)
+                if (Pattern_State == 1)
                 {
-                    if(Pattern_State == 1)
-                    {
-                        Shield_Pattern();
-                    }
-                    else if(Pattern_State == 2)
-                    {
-                        UltiSkll_Pattern();
-                    }
+                    Shield_Pattern();
                 }
-                else
-                    Pattern1();
+                else if (Pattern_State == 2)
+                {
+                    UltiSkll_Pattern();
+                }
             }
+            else
+                Pattern1();
         }
 
         if(IsDie)
@@ -134,13 +132,13 @@ public class Boss2_AI : MonoBehaviour
         {
             m_spriterend.flipX = true;
 
-            m_AttackSensor.transform.localPosition = new Vector3(0.3f, 0.0f, 0.0f);
+            m_AttackSensor.transform.localPosition = new Vector3(0f, 0.0f, 0.0f);
         }
         else if(Traget_Player.position.x < transform.position.x)
         {
             m_spriterend.flipX = false;
 
-            m_AttackSensor.transform.localPosition = new Vector3(-0.3f, 0.0f, 0.0f);
+            m_AttackSensor.transform.localPosition = new Vector3(-2f, 0.0f, 0.0f);
         }
     }
 
@@ -195,11 +193,11 @@ public class Boss2_AI : MonoBehaviour
         DashFinish = true;
     }
 
-    public void AttackStart()
+    void AttackStart()
     {
         m_AttackSensor.SetActive(true);
     }
-    public void AttackEnd()
+    void AttackEnd()
     {
         m_AttackSensor.SetActive(false);
     }

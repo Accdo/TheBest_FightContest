@@ -16,6 +16,8 @@ TagManager:
   - EnemyAttack
   - HealRage
   - Stone
+  - Boss1_Attack
+  - Boss2_Attack
   layers:
   - Default
   - TransparentFX

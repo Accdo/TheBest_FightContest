@@ -63,4 +63,21 @@ public class FadeInFadeOut : MonoBehaviour
         SceneManager.LoadScene(_sceneNum);
     }
 
+    public IEnumerator FadeOutStart(int _sceneNum, float _delayTime)
+    {
+        yield return new WaitForSeconds(_delayTime);
+
+        FadePannel.SetActive(true);
+        for (float f = 0f; f <= 1; f += 0.01f)
+        {
+            Color c = FadePannel.GetComponent<Image>().color;
+            c.a = f;
+            FadePannel.GetComponent<Image>().color = c;
+
+            yield return null;
+        }
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(_sceneNum);
+    }
+
 }
