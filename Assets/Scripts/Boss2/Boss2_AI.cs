@@ -25,11 +25,14 @@ public class Boss2_AI : MonoBehaviour
 
     // ==========================================================
     bool GetHit = false;
-    float Hit_Timer = 0.0f;
+    //float Hit_Timer = 0.0f;
+    [SerializeField]  int Hit_Count = 0;
 
-    public Boss_UI boss_ui; // ���� UI
+    public Boss_UI boss_ui; //  UI
 
-    bool IsDie = false; //����
+    bool IsDie = false; //
+
+    bool StartDie = false;
 
     // ==========================================================
     [SerializeField]
@@ -46,7 +49,11 @@ public class Boss2_AI : MonoBehaviour
     [SerializeField]
     int Pattern_State = 1; // 1 shield 2 UltiSkill
 
+    // ==========================================================
+
     public GameObject potal;
+
+    public GameObject UltiArrow;
 
     void Start()
     {
@@ -60,22 +67,16 @@ public class Boss2_AI : MonoBehaviour
     Color color = new Color32(255,255,255,255);
     void Update()
     {
-        if(m_hp <= 0.0f)
+        if (m_hp <= 0.0f)
         {
-            m_animator.SetTrigger("Die");
+            if (!StartDie)
+            {
+                m_animator.SetTrigger("Die");
+                StartDie = true;
+            }
         }
         else
         {
-            if(GetHit) 
-            {
-                Hit_Timer += Time.deltaTime;
-                if(Hit_Timer >= 1.0f)
-                {
-                    GetHit = false;
-                    Hit_Timer = 0.0f;
-                }
-            }
-
             if (Pattern_Count >= 3)
             {
                 if (Pattern_State == 1)
@@ -88,7 +89,16 @@ public class Boss2_AI : MonoBehaviour
                 }
             }
             else
-                Pattern1();
+            {
+                if (GetHit && Hit_Count >= 5)
+                {
+                    m_animator.SetBool("IsHit", true);
+                }
+                else
+                {
+                    Pattern1();
+                }
+            }
         }
 
         if(IsDie)
@@ -216,16 +226,42 @@ public class Boss2_AI : MonoBehaviour
     public void ChargeStart()
     {
         EffectManager.Instance.PlayEffect("eff_boss2_charg1", transform.position, 2.0f);
+        EffectManager.Instance.PlayEffect("efft_boss2_chargingGround", transform.position);
+        EffectManager.Instance.PlayEffect("efft_boss2_chargingWind", transform.position);
     }
 
     public void UltiBombStart()
     {
         EffectManager.Instance.PlayEffect("eff_boss2_chargeBomb", transform.position);
+
+        GameObject _gameObject;
+        Ulti_Arrow _ultiArrow;
+
+        _gameObject = UltiArrow;
+        _ultiArrow = UltiArrow.GetComponent<Ulti_Arrow>();
+
+        if (!m_spriterend.flipX)
+            _ultiArrow.SetXpos(1);
+        else
+            _ultiArrow.SetXpos(2);
+        Instantiate(_gameObject, transform.position, Quaternion.identity);
     }
 
     public void UltiWaveStart()
     {
-        
+        if(m_spriterend.flipX)
+            EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(-5.7f, 1.8f, 0.0f), -1.0f);
+        else
+            EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(-5.7f, 1.8f, 0.0f), 1.0f);
+    }
+
+    public void BossHitEnd()
+    {
+        Hit_Count = 0;
+
+        GetHit = false;
+
+        m_animator.SetBool("IsHit", false);
     }
 
     public void BossDie()
@@ -240,6 +276,9 @@ public class Boss2_AI : MonoBehaviour
 
     IEnumerator OnHeatTime()
     {
+
+        ++Hit_Count;
+
         int countTime = 0;
 
         while(countTime < 10){
@@ -267,47 +306,52 @@ public class Boss2_AI : MonoBehaviour
         {
             if(other.gameObject.CompareTag("PlayerAttack"))
             {
-                m_hp -= 2.0f;
+                m_hp -= 5.0f;
                 boss_ui.GiveBossHp(m_hp);
     
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
-    
+                
                 GetHit = true;
-                Debug.Log("Hit");
                 if(!IsDie)
                     StartCoroutine(OnHeatTime());
     
-                Hit_Timer = 0.0f;
             }
     
             if(other.gameObject.CompareTag("PlayerUltiSkill"))
             {
-                m_hp -= 30.0f;
+                m_hp -= 50.0f;
                 boss_ui.GiveBossHp(m_hp);
     
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
     
                 GetHit = true;
-                Debug.Log("Hit");
                 if(!IsDie)
                     StartCoroutine(OnHeatTime());
     
-                Hit_Timer = 0.0f;
             }
 
             if(other.gameObject.CompareTag("PlayerBasicSkill"))
             {
-                m_hp -= 20.0f;
+                m_hp -= 30.0f;
                 boss_ui.GiveBossHp(m_hp);
 
                 EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);
                 
                 GetHit = true;
-                Debug.Log("BasicHit");
                 if(!IsDie)
                     StartCoroutine(OnHeatTime());
-                
-                Hit_Timer = 0.0f;
+            }
+
+            if (other.gameObject.CompareTag("ParriedUltiArrow"))
+            {
+                m_hp -= 100.0f;
+                boss_ui.GiveBossHp(m_hp);
+
+                EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);
+
+                GetHit = true;
+                if (!IsDie)
+                    StartCoroutine(OnHeatTime());
             }
         }
     }

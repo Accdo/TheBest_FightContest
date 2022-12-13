@@ -205,7 +205,7 @@ public class Wolf_AI : MonoBehaviour
             if(other.gameObject.CompareTag("PlayerBasicSkill"))
             {
                 MonsterHP.SetActive(true);
-                m_hp -= 20.0f;
+                m_hp -= 30.0f;
                 boss_ui.GiveBossHp(m_hp); // ========================================================================================================================
 
                 EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);

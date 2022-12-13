@@ -12,6 +12,8 @@ public class EffectManager : MonoBehaviour
 
     GameObject tempObj;
 
+    public bool ParringComplete = false;
+
     public static EffectManager Instance
     {
         get
@@ -57,6 +59,17 @@ public class EffectManager : MonoBehaviour
             return;
         }
         Instantiate(Eff_Dic[name], _vec, Quaternion.identity);  
+    }
+
+    public void PlayEffectS(string name, Vector3 _vec, float _scaleX)
+    {
+        if (Eff_Dic.ContainsKey(name) == false)
+        {
+            Debug.Log(name + " is not Contained Eff_Dic");
+            return;
+        }
+        Eff_Dic[name].transform.localScale = new Vector3(_scaleX, 1.0f, 1.0f);
+        Instantiate(Eff_Dic[name], _vec, Quaternion.identity);
     }
 
     public void PlayEffect(string name, Vector3 _vec, float _deathTime)

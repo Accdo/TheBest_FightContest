@@ -1033,6 +1033,10 @@ PrefabInstance:
       propertyPath: next_text.Array.data[1]
       value: -98
       objectReference: {fileID: 0}
+    - target: {fileID: 8675049293242718492, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8675049294361968006, guid: fe768350ac72f3b498e8420f3762594c, type: 3}
       propertyPath: m_Pivot.x
       value: 0

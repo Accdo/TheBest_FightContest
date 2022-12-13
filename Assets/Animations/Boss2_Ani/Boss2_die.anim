@@ -20,14 +20,32 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7b1eee8d025efcf4ca3d83136c31fec5, type: 3}
-    - time: 0.016666668
-      value: {fileID: 21300000, guid: 3d3f6ba1f210a9b49b59fd409ea8caf3, type: 3}
+      value: {fileID: 21300000, guid: 643e182358fb5e4458491192a4d96f06, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: f94ae47813e277a4faec77b0ee065720, type: 3}
+    - time: 0.2
+      value: {fileID: 21300000, guid: e0190abcaa9857f4cbd16ffa914a398a, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: 9cf03710296443f4bbcec6930ffd4e8f, type: 3}
+    - time: 0.4
+      value: {fileID: 21300000, guid: 24e6885bb75ea7046a7e9251cd27bbde, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: eba1824f70aa7e343b5656149b0c8fbf, type: 3}
+    - time: 0.6
+      value: {fileID: 21300000, guid: 1cfc09cef51557d4b92c0841011874ab, type: 3}
+    - time: 0.7
+      value: {fileID: 21300000, guid: 4ff7107db7f3cbc40a5c1b1ba9bd6901, type: 3}
+    - time: 0.8
+      value: {fileID: 21300000, guid: 20b0e3ebe9f9c1c468f910b0f16a18a3, type: 3}
+    - time: 0.9
+      value: {fileID: 21300000, guid: 2505bb042dcfa274c9e75a8921e4d605, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: bbaec99b12845bb44a6eb9ad0a8e21c0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -42,14 +60,23 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7b1eee8d025efcf4ca3d83136c31fec5, type: 3}
-    - {fileID: 21300000, guid: 3d3f6ba1f210a9b49b59fd409ea8caf3, type: 3}
+    - {fileID: 21300000, guid: 643e182358fb5e4458491192a4d96f06, type: 3}
+    - {fileID: 21300000, guid: f94ae47813e277a4faec77b0ee065720, type: 3}
+    - {fileID: 21300000, guid: e0190abcaa9857f4cbd16ffa914a398a, type: 3}
+    - {fileID: 21300000, guid: 9cf03710296443f4bbcec6930ffd4e8f, type: 3}
+    - {fileID: 21300000, guid: 24e6885bb75ea7046a7e9251cd27bbde, type: 3}
+    - {fileID: 21300000, guid: eba1824f70aa7e343b5656149b0c8fbf, type: 3}
+    - {fileID: 21300000, guid: 1cfc09cef51557d4b92c0841011874ab, type: 3}
+    - {fileID: 21300000, guid: 4ff7107db7f3cbc40a5c1b1ba9bd6901, type: 3}
+    - {fileID: 21300000, guid: 20b0e3ebe9f9c1c468f910b0f16a18a3, type: 3}
+    - {fileID: 21300000, guid: 2505bb042dcfa274c9e75a8921e4d605, type: 3}
+    - {fileID: 21300000, guid: bbaec99b12845bb44a6eb9ad0a8e21c0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.033333335
+    m_StopTime: 1.1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -69,7 +96,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 1
     functionName: BossDie
     data: 
     objectReferenceParameter: {fileID: 0}

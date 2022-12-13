@@ -18,6 +18,8 @@ TagManager:
   - Stone
   - Boss1_Attack
   - Boss2_Attack
+  - UltiArrow
+  - ParriedUltiArrow
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class Arrow : MonoBehaviour
     public float speed = 10.0f;
     public float lifeTime = 3.0f;
 
-    public GameObject PlayerBomb; // �÷��̾� ����Ʈ
+    public GameObject PlayerBomb; 
 
     private void Start()
     {
@@ -30,13 +30,12 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("PlayerParring"))
         {
-            //Instantiate(PlayerBomb, transform.position, Quaternion.identity);
             EffectManager.Instance.PlayEffect("player_parry_bomb", transform.position);
 
             gameObject.tag = "ParriedArrow";
 
             dir = Vector3.right;
-            //transform.rotation = Quaternion.Euler(0,0,180);
+
             m_sprite.flipX = true;
             shadow_sprite.flipX = true;
 
@@ -44,6 +43,4 @@ public class Arrow : MonoBehaviour
             lifeTime = 4.5f;
         }
     }
-
-
 }

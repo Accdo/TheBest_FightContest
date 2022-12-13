@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Effect_End : MonoBehaviour
 {
+    int count = 0;
+
     void Start()
     {
         
@@ -22,5 +24,14 @@ public class Effect_End : MonoBehaviour
     public void Eff_Thd_End()
     {
         Destroy(this.gameObject, 1.0f);
+    }
+
+    public void Eff_ThreeCycle_End()
+    {
+        ++count;
+        if(count >= 3)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

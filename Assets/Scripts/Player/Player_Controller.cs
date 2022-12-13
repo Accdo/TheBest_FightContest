@@ -11,7 +11,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] float m_mp = 100;
 
     [SerializeField] float m_speed = 8.0f; // 이동속도
-    [SerializeField] float m_jumpForce = 10.0f; // 점프 가속
+    [SerializeField] float m_jumpForce = 12.0f; // 점프 가속
     [SerializeField] float m_rollForce = 20.0f;
 
     private Animator m_animator; // 애니메이터
@@ -63,6 +63,9 @@ public class Player_Controller : MonoBehaviour
     public Player_UI player_ui;
 
     bool IsDie = false;
+
+    bool Charge_Start = false;
+    [SerializeField] float Charge_Timer = 0.0f;
 
     void Start()
     {
@@ -180,6 +183,26 @@ public class Player_Controller : MonoBehaviour
             StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(SceneManager.GetActiveScene().buildIndex, 3.0f));
 
             this.gameObject.GetComponent<Player_Controller>().enabled = false;
+        }
+
+        else if (EffectManager.Instance.ParringComplete)
+        {
+            Charge_Timer += Time.deltaTime;
+
+            if (!Charge_Start)
+            {
+                m_animator.SetTrigger("UltiCharging");
+                Charge_Start = true;
+            }
+
+            if (Charge_Timer >= 2.0f)
+            {
+                m_animator.SetTrigger("UltiChargingShot");
+                Charge_Start = false;
+
+                EffectManager.Instance.ParringComplete = false;
+                Charge_Timer = 0.0f;
+            }
         }
 
         //Attack
@@ -393,6 +416,38 @@ public class Player_Controller : MonoBehaviour
         EffectManager.Instance.PlayEffect("Basic_Skill_Fog", B_Skill_pos.position);
     }
 
+    public void ChargeStart()
+    {
+        EffectManager.Instance.PlayEffect("eff_boss2_charg1", transform.position, 2.0f);
+        EffectManager.Instance.PlayEffect("efft_boss2_chargingGround", transform.position);
+        EffectManager.Instance.PlayEffect("efft_boss2_chargingWind", transform.position);
+    }
+
+    public void UltiBombStart()
+    {
+        EffectManager.Instance.PlayEffect("eff_boss2_chargeBomb", transform.position);
+
+        //GameObject _gameObject;
+        //Ulti_Arrow _ultiArrow;
+
+        //_gameObject = UltiArrow;
+        //_ultiArrow = UltiArrow.GetComponent<Ulti_Arrow>();
+
+        //if (!m_spriterend.flipX)
+        //    _ultiArrow.SetXpos(1);
+        //else
+        //    _ultiArrow.SetXpos(2);
+        //Instantiate(_gameObject, transform.position, Quaternion.identity);
+    }
+
+    public void UltiWaveStart()
+    {
+        if (m_sprite.flipX)
+            EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(6.0f, 1.3f, 0.0f), -1.0f);
+        else
+            EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(6.0f, 1.3f, 0.0f), 1.0f);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(!NoDamage)
@@ -407,7 +462,6 @@ public class Player_Controller : MonoBehaviour
                     StartCoroutine(OnHeatTime());
                 GetHit = true;
             }
-
 
             if (other.gameObject.CompareTag("Boss2_Attack"))
             {
@@ -433,6 +487,15 @@ public class Player_Controller : MonoBehaviour
             {
                 m_hp -= 10.0f;
                 player_ui.GivePlayerHp(m_hp, -10.0f);
+                if (!IsDie)
+                    StartCoroutine(OnHeatTime());
+                GetHit = true;
+            }
+
+            if (other.gameObject.CompareTag("UltiArrow"))
+            {
+                m_hp -= 40.0f;
+                player_ui.GivePlayerHp(m_hp, -40.0f);
                 if (!IsDie)
                     StartCoroutine(OnHeatTime());
                 GetHit = true;

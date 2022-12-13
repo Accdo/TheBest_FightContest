@@ -31,6 +31,8 @@ public class Boss1_AI : MonoBehaviour
 
     bool IsDie = false; //
 
+    bool StartDie = false;
+
     // ==========================================================
     [SerializeField]
     int Pattern_Count = 0;
@@ -62,7 +64,11 @@ public class Boss1_AI : MonoBehaviour
     {
         if (m_hp <= 0.0f)
         {
-            m_animator.SetTrigger("Die");
+            if(!StartDie)
+            {
+                m_animator.SetTrigger("Die");
+                StartDie = true;
+            }
         }
         else
         {
@@ -265,12 +271,11 @@ public class Boss1_AI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (m_hp > 0.0f && !IsShield)
         {
             if (other.gameObject.CompareTag("PlayerAttack"))
             {
-                m_hp -= 2.0f;
+                m_hp -= 10.0f;
                 boss_ui.GiveBossHp(m_hp);
 
                 EffectManager.Instance.PlayEffect("player_atk_Bomb", transform.position);
@@ -300,7 +305,7 @@ public class Boss1_AI : MonoBehaviour
 
             if (other.gameObject.CompareTag("PlayerBasicSkill"))
             {
-                m_hp -= 20.0f;
+                m_hp -= 30.0f;
                 boss_ui.GiveBossHp(m_hp);
 
                 EffectManager.Instance.PlayEffect("Basic_Skill", transform.position);
