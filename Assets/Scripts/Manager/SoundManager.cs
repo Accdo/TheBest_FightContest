@@ -29,7 +29,15 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip TutorialBgmAudioClip; // 튜토리얼 배경음
     [SerializeField]
-    private AudioClip BattleBgmAudioClip; // 튜토리얼 배경음
+    private AudioClip CutSceneBgmAudioClip; // 배틀 배경음
+    [SerializeField]
+    private AudioClip Stage1_BgmAudioClip; // 배틀 배경음
+    [SerializeField]
+    private AudioClip StageBoss1_BgmAudioClip; // 배틀 배경음
+    [SerializeField]
+    private AudioClip Stage2_BgmAudioClip; // 배틀 배경음
+    [SerializeField]
+    private AudioClip StageBoss2_BgmAudioClip; // 배틀 배경음
 
 
     [SerializeField]
@@ -70,23 +78,43 @@ public class SoundManager : MonoBehaviour
     }
 
     //BGM 사운드 재생 : 볼륨을 선택적 매개변수로 지정
-    public void PlayBGMSound(float volume = 1f)
+    public void PlayBGMSound(int bgm_num, float volume = 1f)
     {
         bgmPlayer.loop = true; //BGM 사운드이므로 루프설정
         bgmPlayer.volume = volume * masterVolumeBGM;
 
-        if (SceneManager.GetActiveScene().name == "Tutorial_CutScene")
-        {
-            bgmPlayer.clip = BattleBgmAudioClip;
-            bgmPlayer.Play();
-        }
-        else
+        if (bgm_num == 1)
         {
             bgmPlayer.clip = TutorialBgmAudioClip;
             bgmPlayer.Play();
         }
+        else if (bgm_num == 2)
+        {
+            bgmPlayer.clip = CutSceneBgmAudioClip;
+            bgmPlayer.Play();
+        }
+        else if (bgm_num == 3)
+        {
+            bgmPlayer.clip = Stage1_BgmAudioClip;
+            bgmPlayer.Play();
+        }
+        else if (bgm_num == 4)
+        {
+            bgmPlayer.clip = StageBoss1_BgmAudioClip;
+            bgmPlayer.Play();
+        }
+        else if (bgm_num == 5)
+        {
+            bgmPlayer.clip = Stage2_BgmAudioClip;
+            bgmPlayer.Play();
+        }
+        else if (bgm_num == 6)
+        {
+            bgmPlayer.clip = StageBoss2_BgmAudioClip;
+            bgmPlayer.Play();
+        }
 
-        
+
     }
 
 

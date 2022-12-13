@@ -117,18 +117,18 @@ public class Boss2_AI : MonoBehaviour
         if(pattern_timer1 >= 1.5f)
         {
             m_animator.SetBool("Attack", false);
-            m_animator.SetInteger("Pattern_State1", 1); // �޸���
+            m_animator.SetInteger("Pattern_State1", 1); 
 
             m_speed = 4f;
             
             if(pattern_timer1 >= 3.5f)
             {
-                m_animator.SetInteger("Pattern_State1", 2); // �뽬
+                m_animator.SetInteger("Pattern_State1", 2);
                 m_speed = m_dashspeed;
 
                 if(DashFinish && pattern_timer1 >= 3.6f)
                 {
-                    m_animator.SetBool("Attack", true); // ����
+                    m_animator.SetBool("Attack", true);
 
                     m_speed = 0;
                     ++Pattern_Count;
@@ -206,10 +206,12 @@ public class Boss2_AI : MonoBehaviour
     void AttackStart()
     {
         m_AttackSensor.SetActive(true);
+        SoundManager.Instance.PlaySFXSound("Boss2_Atk1", 0.5f);
     }
     void AttackEnd()
     {
         m_AttackSensor.SetActive(false);
+        SoundManager.Instance.PlaySFXSound("Boss2_Atk2", 0.5f);
     }
 
     public void ShieldStart()
@@ -228,6 +230,7 @@ public class Boss2_AI : MonoBehaviour
         EffectManager.Instance.PlayEffect("eff_boss2_charg1", transform.position, 2.0f);
         EffectManager.Instance.PlayEffect("efft_boss2_chargingGround", transform.position);
         EffectManager.Instance.PlayEffect("efft_boss2_chargingWind", transform.position);
+        SoundManager.Instance.PlaySFXSound("Ulti_Charge", 0.5f);
     }
 
     public void UltiBombStart()
@@ -253,6 +256,8 @@ public class Boss2_AI : MonoBehaviour
             EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(-5.7f, 1.8f, 0.0f), -1.0f);
         else
             EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(-5.7f, 1.8f, 0.0f), 1.0f);
+
+        SoundManager.Instance.PlaySFXSound("Ulti_Explosion", 0.5f);
     }
 
     public void BossHitEnd()

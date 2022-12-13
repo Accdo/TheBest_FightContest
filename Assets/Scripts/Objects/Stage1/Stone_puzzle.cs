@@ -29,12 +29,12 @@ public class Stone_puzzle : MonoBehaviour
             {
                 if(word_count == 3)
                 {
-                    Debug.Log("Step1");
                     StartCoroutine(AlphaTime());
 
                     Destroy(eff_heal);
                 }
 
+                SoundManager.Instance.PlaySFXSound("Rocksound", 1.0f);
                 Word[word_count].SetActive(true);
                 ++word_count;
             }

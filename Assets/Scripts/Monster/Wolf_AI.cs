@@ -140,6 +140,8 @@ public class Wolf_AI : MonoBehaviour
     {
         m_speed = m_dashspeed;
 
+        SoundManager.Instance.PlaySFXSound("Wolf_Atk", 0.5f);
+
         m_AttackSensor.SetActive(true);
     }
     void RushEnd()

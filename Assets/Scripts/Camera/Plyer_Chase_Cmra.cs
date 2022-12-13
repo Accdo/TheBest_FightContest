@@ -8,6 +8,8 @@ public class Plyer_Chase_Cmra : MonoBehaviour
 
     public GameObject player;
 
+    public float MaxPos = 66.1f;
+    public float IfMaxPos = 66.09999f;
 
     void Start()
     {
@@ -16,13 +18,13 @@ public class Plyer_Chase_Cmra : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.x >= 66.1f)
+        if(transform.position.x >= MaxPos)
         {
-            transform.position = new Vector3(66.1f, 0, transform.position.z);
+            transform.position = new Vector3(MaxPos, 0, transform.position.z);
 
             if(player.transform.position.x < 60.0f)
             {
-                transform.position = new Vector3(66.09999f, 0, transform.position.z);
+                transform.position = new Vector3(IfMaxPos, 0, transform.position.z);
             }
         }
         else

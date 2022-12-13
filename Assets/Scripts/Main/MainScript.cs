@@ -12,10 +12,31 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {   
-        if (SceneManager.GetActiveScene().name == "Tutorial_Scene_0" || SceneManager.GetActiveScene().name == "Tutorial_CutScene")
+        if (SceneManager.GetActiveScene().name == "Tutorial_Scene_0")
         {
-            SoundManager.Instance.PlayBGMSound(0.2f);
+            SoundManager.Instance.PlayBGMSound(1, 0.2f);
         }
+        if(SceneManager.GetActiveScene().name == "Tutorial_CutScene")
+        {
+            SoundManager.Instance.PlayBGMSound(2, 0.2f);
+        }
+        if (SceneManager.GetActiveScene().name == "Stage0")
+        {
+            SoundManager.Instance.PlayBGMSound(3, 0.2f);
+        }
+        if (SceneManager.GetActiveScene().name == "Stage1_BossBattle")
+        {
+            SoundManager.Instance.PlayBGMSound(4, 0.2f);
+        }
+        if (SceneManager.GetActiveScene().name == "Stage2")
+        {
+            SoundManager.Instance.PlayBGMSound(5, 0.2f);
+        }
+        if (SceneManager.GetActiveScene().name == "Tutorial_Scene_3")
+        {
+            SoundManager.Instance.PlayBGMSound(6, 0.2f);
+        }
+
 
         StartCoroutine(FadeInFadeOut.Instance.FadeInStart());
     }
@@ -24,13 +45,11 @@ public class MainScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UIManager.Instance.Window_On("Pause_Window_panel");
         }
-
-        
     }
 }

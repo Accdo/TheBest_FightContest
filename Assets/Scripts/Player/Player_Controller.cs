@@ -230,6 +230,7 @@ public class Player_Controller : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.B) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
         {
             m_animator.SetTrigger("Heal");
+            SoundManager.Instance.PlaySFXSound("Heal", 1.0f);
 
             if (!m_sprite.flipX)
                 EffectManager.Instance.PlayEffect("effect_player_heal", transform.position + new Vector3(-0.4f, -1.0f, 0.0f));
@@ -254,7 +255,7 @@ public class Player_Controller : MonoBehaviour
             if(B_Skill_Timer >= 5.0f)
             {
                 m_animator.SetTrigger("BasicSkill");
-                SoundManager.Instance.PlaySFXSound("Atk1", 0.5f);
+                //SoundManager.Instance.PlaySFXSound("Atk1", 0.5f);
 
                 m_mp -= 10.0f;
                 player_ui.GivePlayerMp(m_mp, -10.0f);
@@ -269,7 +270,7 @@ public class Player_Controller : MonoBehaviour
             if(state_Ulti) // 기본 배경, 궁극기 쓰기전
             {
                 m_animator.SetTrigger("UltiSkill");
-                SoundManager.Instance.PlaySFXSound("Atk3", 0.5f);
+                SoundManager.Instance.PlaySFXSound("UltiSkill_Start_01", 0.5f);
 
                 m_mp -= 20.0f;
                 player_ui.GivePlayerMp(m_mp, -20.0f);
@@ -279,7 +280,7 @@ public class Player_Controller : MonoBehaviour
             else // 궁극기 배경, 궁극기 쓴 상태
             {
                 m_animator.SetTrigger("UltiSkill_Fin");
-                SoundManager.Instance.PlaySFXSound("Atk4", 0.5f);
+                SoundManager.Instance.PlaySFXSound("UltiSkill_End_01", 0.5f);
 
                 state_Ulti = true;
             }
@@ -301,6 +302,7 @@ public class Player_Controller : MonoBehaviour
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
+            SoundManager.Instance.PlaySFXSound("Dash_01", 1.0f);
 
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             ///Debug.Log("Roll!");
@@ -311,6 +313,8 @@ public class Player_Controller : MonoBehaviour
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling && !GetHit)
         {
             m_animator.SetTrigger("Jump");
+            SoundManager.Instance.PlaySFXSound("Player_Jump", 1.0f);
+
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
             //m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
@@ -322,7 +326,8 @@ public class Player_Controller : MonoBehaviour
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
-            // Reset timer
+            //SoundManager.Instance.PlaySFXSound("walk", 1.0f);
+
             m_delayToIdle = 0.05f;
             m_animator.SetInteger("AnimState", 1);
         }
@@ -421,6 +426,7 @@ public class Player_Controller : MonoBehaviour
         EffectManager.Instance.PlayEffect("eff_boss2_charg1", transform.position, 2.0f);
         EffectManager.Instance.PlayEffect("efft_boss2_chargingGround", transform.position);
         EffectManager.Instance.PlayEffect("efft_boss2_chargingWind", transform.position);
+        SoundManager.Instance.PlaySFXSound("Ulti_Charge", 0.5f);
     }
 
     public void UltiBombStart()
@@ -446,6 +452,8 @@ public class Player_Controller : MonoBehaviour
             EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(6.0f, 1.3f, 0.0f), -1.0f);
         else
             EffectManager.Instance.PlayEffectS("eff_boss2_ultiWave", transform.position + new Vector3(6.0f, 1.3f, 0.0f), 1.0f);
+
+        SoundManager.Instance.PlaySFXSound("Ulti_Explosion", 0.5f);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

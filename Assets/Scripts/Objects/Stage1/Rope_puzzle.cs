@@ -27,12 +27,15 @@ public class Rope_puzzle : MonoBehaviour
             if(rope_truth == 1)
             {
                 StartCoroutine(TrapTime());
+                SoundManager.Instance.PlaySFXSound("RopeAtk", 1.0f);
+
                 Destroy(eff_heal);
             }
 
             if(rope_truth == 2)
             {
                 StartCoroutine(TrapTime());
+                SoundManager.Instance.PlaySFXSound("RopeAtk", 1.0f);
             }
         }
     }

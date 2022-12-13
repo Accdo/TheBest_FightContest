@@ -90,8 +90,7 @@ public class Boss1_AI : MonoBehaviour
                 }
                 else if (Pattern_State == 2)
                 {
-                    Shield_Pattern();
-                    //UltiSkll_Pattern();
+                    UltiSkll_Pattern();
                 }
             }
             else
@@ -102,6 +101,14 @@ public class Boss1_AI : MonoBehaviour
         {
             color.a -= Time.deltaTime;
             m_spriterend.color = color;
+        }
+        else
+        {
+            if(Pattern_State != 2)
+            {
+                color.a += Time.deltaTime;
+                m_spriterend.color = color;
+            }        
         }
     }
 
@@ -121,11 +128,12 @@ public class Boss1_AI : MonoBehaviour
             if (pattern_timer1 >= 3.5f)
             {
                 m_animator.SetInteger("Pattern_State1", 2);
+
                 m_speed = m_dashspeed;
 
                 if (DashFinish && pattern_timer1 >= 3.6f)
                 {
-                    m_animator.SetBool("Attack", true); 
+                    m_animator.SetBool("Attack", true);
 
                     m_speed = 0;
                     ++Pattern_Count;
@@ -133,7 +141,6 @@ public class Boss1_AI : MonoBehaviour
                 }
             }
         }
-
 
         if (Traget_Player.position.x > transform.position.x)
         {
@@ -179,7 +186,7 @@ public class Boss1_AI : MonoBehaviour
 
         if (!Charge_Start)
         {
-            m_animator.SetTrigger("Charging");
+            m_animator.SetTrigger("UltiGo");
             Charge_Start = true;
         }
 
@@ -188,10 +195,17 @@ public class Boss1_AI : MonoBehaviour
             Pattern_Count = 0;
             Pattern_State = 1;
 
-            m_animator.SetTrigger("UltiShot");
+            transform.position = new Vector3(0.0f, transform.position.y, transform.position.z);
+
+            m_animator.SetTrigger("UltiGoGo");
             Charge_Start = false;
 
             Charge_Timer = 0.0f;
+        }
+        else
+        {
+            color.a -= Time.deltaTime;
+            m_spriterend.color = color;
         }
     }
 
@@ -202,13 +216,13 @@ public class Boss1_AI : MonoBehaviour
 
     void AttackStart()
     {
-        Debug.Log("aa");
         m_AttackSensor.SetActive(true);
+        SoundManager.Instance.PlaySFXSound("Boss1_Atk_1", 0.5f);
     }
     void AttackEnd()
     {
-        Debug.Log("bb");
         m_AttackSensor.SetActive(false);
+        SoundManager.Instance.PlaySFXSound("Boss1_Atk_2", 0.5f);
     }
 
     public void ShieldStart()
@@ -220,20 +234,24 @@ public class Boss1_AI : MonoBehaviour
         
     }
 
-    public void ChargeStart()
+    public void UltiStart()
     {
-        EffectManager.Instance.PlayEffect("eff_boss2_charg1", transform.position, 2.0f);
+        EffectManager.Instance.PlayEffect("eff_boss1__teleport", transform.position);
+        SoundManager.Instance.PlaySFXSound("Teleport", 0.5f);
     }
 
-    public void UltiBombStart()
+    public void UltiDeathSlash1()
     {
-        EffectManager.Instance.PlayEffect("eff_boss2_chargeBomb", transform.position);
+        EffectManager.Instance.PlayEffect("eff_boss1_UpAttack", transform.position);
+        SoundManager.Instance.PlaySFXSound("Ulti_1", 0.5f);
     }
 
-    public void UltiWaveStart()
+    public void UltiDeathSlash2()
     {
-
+        EffectManager.Instance.PlayEffect("eff_boss1_scratchX", transform.position);
+        SoundManager.Instance.PlaySFXSound("Ulti_2,3", 0.5f);
     }
+
 
     public void BossDie()
     {

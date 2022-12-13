@@ -31,6 +31,7 @@ public class Arrow : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerParring"))
         {
             EffectManager.Instance.PlayEffect("player_parry_bomb", transform.position);
+            SoundManager.Instance.PlaySFXSound("Arrow_Parring", 1.0f);
 
             gameObject.tag = "ParriedArrow";
 

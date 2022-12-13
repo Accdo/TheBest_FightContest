@@ -22,6 +22,7 @@ public class Hammer_puzzle : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
             StartCoroutine(HammerTime());
+            SoundManager.Instance.PlaySFXSound("RopeAtk", 1.0f);
         }
     }
 

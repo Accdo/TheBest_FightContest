@@ -36,7 +36,8 @@ public class ArrowTower_Shot : MonoBehaviour
 
             if(Attack_Time >= Attack_delay)
             {
-                Debug.Log("Shot");
+               SoundManager.Instance.PlaySFXSound("Arrow_Basic", 1.0f);
+
                 Instantiate(Arrow_B, Shot_pos.position, Arrow_B.transform.rotation);
                 Attack_Time = 0.0f;
             }

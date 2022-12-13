@@ -176,13 +176,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolumeSFX: 1
   masterVolumeBGM: 1
-  BgmAudioClip: {fileID: 8300000, guid: ca5f11d5c3870d34c97963092fbd827a, type: 3}
+  TutorialBgmAudioClip: {fileID: 8300000, guid: ca5f11d5c3870d34c97963092fbd827a, type: 3}
+  CutSceneBgmAudioClip: {fileID: 8300000, guid: 1563053209fb8364681695358e050346, type: 3}
+  Stage1_BgmAudioClip: {fileID: 8300000, guid: 27c2829dc2b764f48a217989c3512769, type: 3}
+  StageBoss1_BgmAudioClip: {fileID: 8300000, guid: 84f942e7b981f9646b82d7bd60efa820, type: 3}
+  Stage2_BgmAudioClip: {fileID: 8300000, guid: 5eeae921642d6c0478f0927c3fe20ad6, type: 3}
+  StageBoss2_BgmAudioClip: {fileID: 8300000, guid: 7eb9a0bbac95ba7438e1237ef8fa96d6, type: 3}
   sfxAudioClips:
   - {fileID: 8300000, guid: 54bc37a741fa1db4a869ce324d5acc59, type: 3}
   - {fileID: 8300000, guid: edfa1d8bbb6e2ca4f91a84706c5b7ece, type: 3}
   - {fileID: 8300000, guid: 18edb532f8be71e4e8ce872b8a4d6db5, type: 3}
   - {fileID: 8300000, guid: 84ac2e10277ccb642ab7d179945a69cc, type: 3}
   - {fileID: 8300000, guid: 74ad91b8358ae7344bcec0761c5005d1, type: 3}
+  - {fileID: 8300000, guid: 96a5700129d6b614bb68e452e9a0886a, type: 3}
+  - {fileID: 8300000, guid: 502e3218ef5849941bca09a766e0b352, type: 3}
+  - {fileID: 8300000, guid: 9569e51cd4d87af4da61803da40f7c59, type: 3}
+  - {fileID: 8300000, guid: e4472a88e7af5294b8b8c66548a55d6a, type: 3}
+  - {fileID: 8300000, guid: efa6ae18faa3ba54caba422c61694465, type: 3}
+  - {fileID: 8300000, guid: 3b3d5cffc2669d94cb453298c594fd39, type: 3}
+  - {fileID: 8300000, guid: d14458c5494ff74478834fdc5fe4e1e5, type: 3}
+  - {fileID: 8300000, guid: b8d3d61c9888c804c9e62ebe9c628253, type: 3}
+  - {fileID: 8300000, guid: 58a2a253032faee4b97b22b99716e496, type: 3}
+  - {fileID: 8300000, guid: f7287ae3880dabc409a5b1e764ff763e, type: 3}
+  - {fileID: 8300000, guid: 22cdf9713b4350d4d87a220a94675822, type: 3}
+  - {fileID: 8300000, guid: bffd3fbcbc5b630479b0c5a5e5264f1a, type: 3}
+  - {fileID: 8300000, guid: f21f7cc14f7a2a640bfe9755a1279f51, type: 3}
+  - {fileID: 8300000, guid: 7f17709c999912541a353e9f77ab07b0, type: 3}
+  - {fileID: 8300000, guid: 7d57cbfdc674fc048a366e79d70e97b7, type: 3}
+  - {fileID: 8300000, guid: e855dbb79aab0e340a867ff015e58acb, type: 3}
+  - {fileID: 8300000, guid: 6853d38acae594a4ca8259fec1d9d0f0, type: 3}
+  - {fileID: 8300000, guid: 5e9b62d26068f914fbaa85bd1b15bebc, type: 3}
+  - {fileID: 8300000, guid: 1e2fb2b790fe41d41bacefaf3a6b2518, type: 3}
+  - {fileID: 8300000, guid: 0110774fa01682642b3d9c9b06917b03, type: 3}
+  - {fileID: 8300000, guid: 25573ee825e864748ad40ffa7dac7f3c, type: 3}
+  - {fileID: 8300000, guid: 3c89e745ba141414f92f433a21b9c9e1, type: 3}
+  - {fileID: 8300000, guid: 95642980f0fae2b4e8e42ff6a406b9cc, type: 3}
+  - {fileID: 8300000, guid: 34a047a7d3e8592428b1c8e9bd8a9506, type: 3}
+  - {fileID: 8300000, guid: d546508bf32144045bafc2bb00ad4acd, type: 3}
+  - {fileID: 8300000, guid: 2d9a0628576236f4590e9bdefd53f912, type: 3}
+  - {fileID: 8300000, guid: 5e4b6f877a86e5141b62120c16f1d624, type: 3}
+  - {fileID: 8300000, guid: 622cbef073dd0ea42adabd55e504a769, type: 3}
+  - {fileID: 8300000, guid: 1846b4ff77a7ba64697e28aa7531825c, type: 3}
+  - {fileID: 8300000, guid: c28d757777d0dfb49bf32538d4313cea, type: 3}
+  - {fileID: 8300000, guid: 4faf90a9218fca34d8456cad6bec7877, type: 3}
+  - {fileID: 8300000, guid: ef00733274656324784e395ddfa8ae52, type: 3}
+  - {fileID: 8300000, guid: d4596679e0d31a649a81fab318d34d15, type: 3}
+  - {fileID: 8300000, guid: 2180b6148ff7f4b438a8d3c2c17f2448, type: 3}
 --- !u!1 &4091903350572352644
 GameObject:
   m_ObjectHideFlags: 0

@@ -709,7 +709,7 @@ MonoBehaviour:
   B_Skill: {fileID: 0}
   B_Skill_pos: {fileID: 0}
   player_ui: {fileID: 0}
-  shadow_player: {fileID: 0}
+  Charge_Timer: 0
 --- !u!4 &2087487698
 Transform:
   m_ObjectHideFlags: 0
@@ -1568,9 +1568,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogText: {fileID: 6963347920519109456}
   sta:
-  - "\uC548\uB155! \uB098 \uC880 \uB3C4\uC640\uC904 \uC218 \uC788\uB2C8?"
-  - "\uC800\uAE30 \uC880 \uB6AB\uC5B4\uC918!"
-  - "\uADF8\uB7FC \uBD80\uD0C1\uD55C\uB2E4\uAD6C~"
+  - "\uC774\uC0C1\uD55C \uBB38\uC591\uC758 \uC637\uC744 \uC785\uC740 \uC0AC\uB78C\uB4E4\uC774
+    \uC6B0\uB9AC\uB97C \uACF5\uACA9\uD588\uC5B4"
+  - "\uC8FC\uC778\uACF5 : \uADF8 \uBB38\uC591\uC740 \uB0B4 \uBB38\uD30C\uB97C \uACF5\uACA9\uD55C
+    \uBB38\uC591\uC778\uB370.."
+  - "\uC8FC\uC778\uACF5 : \uB0B4\uAC00 \uB3C4\uC640\uC904\uAC8C \uAC19\uC774 \uADF8\uB140\uC11D\uB4E4\uC744
+    \uBB3C\uB9AC\uCE58\uC790"
   NextSceneNumber: 7
 --- !u!1 &6963347920519109454
 GameObject:

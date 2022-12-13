@@ -33,6 +33,8 @@ public class WoodFance : MonoBehaviour
     {
         if (IsHit)
         {
+            SoundManager.Instance.PlaySFXSound("Fence_Atk", 0.5f);
+
             m_sprite.sprite = wood_sprite[wood_count];
             IsHit = false;
         }
@@ -50,7 +52,11 @@ public class WoodFance : MonoBehaviour
                 if(wood_count == 5)
                 {
                     rope_trap.SetActive(true);
+                    SoundManager.Instance.PlaySFXSound("Fence_Broken", 0.5f);
+
                     wolf.SetActive(true);
+                    SoundManager.Instance.PlaySFXSound("Wolf_RunStart", 0.5f);
+
                     Potal_Open.SetActive(true);
                 }
             }

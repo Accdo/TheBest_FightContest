@@ -150,6 +150,7 @@ public class Thief_AI : MonoBehaviour
         if (!IsAttackStart)
         {
             m_animator.SetBool("pattern_attack1", true);
+            SoundManager.Instance.PlaySFXSound("Monster2_Atk_1", 0.5f);
 
             IsAttackStart = true;
         }
@@ -187,6 +188,7 @@ public class Thief_AI : MonoBehaviour
     void delayattack()
     {
         m_animator.SetBool("pattern_attack2", true);
+        SoundManager.Instance.PlaySFXSound("Monster2_Atk2", 0.5f);
     }
 
     void Attack2_Start()
