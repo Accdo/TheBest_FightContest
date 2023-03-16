@@ -76,6 +76,10 @@ public class Player_Controller : MonoBehaviour
         m_body2d = GetComponent<Rigidbody2D>();
         m_sprite = GetComponent<SpriteRenderer>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Player_Sensor>();
+        m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Player_Sensor>();
+        m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Player_Sensor>();
+        m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Player_Sensor>();
+        m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Player_Sensor>();
 
         m_animator.SetBool("Grounded", m_grounded); // 플레이어가 땅에 있다
 
@@ -148,7 +152,8 @@ public class Player_Controller : MonoBehaviour
         // 공중에 있을 시?
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
-
+        //Wall Slide
+        //m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
 
         if(!can_Parring)
         {

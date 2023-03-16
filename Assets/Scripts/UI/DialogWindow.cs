@@ -6,12 +6,12 @@ using TMPro;
 
 public class DialogWindow : MonoBehaviour
 {
-    public TextMeshProUGUI dialogText;
+    public TextMeshProUGUI dialogText; // 실제 출력되는 텍스트
 
     public Player_Controller player_con;
 
     // ���ڿ�
-    public string [] sta;
+    public string [] sta; 
     public string next_text;
     private int DialogCount;
 
@@ -20,7 +20,6 @@ public class DialogWindow : MonoBehaviour
     public bool CurrentDialogEnd = false; // 
     bool NextScene = false; // 
     public int NextSceneNumber = 1; // 
-
 
     void Start()
     {
@@ -58,7 +57,7 @@ public class DialogWindow : MonoBehaviour
         foreach (char letter in text.ToCharArray())
         {
             dialogText.text += letter;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
@@ -72,8 +71,12 @@ public class DialogWindow : MonoBehaviour
         {
             if(sta.Length > ++DialogCount) // 
             {
+                if(DialogCount > 0)
+                    StopAllCoroutines();
+
                 dialogText.text = "";
                 StartCoroutine(Typing(sta[DialogCount]));
+
             }
             else
             {

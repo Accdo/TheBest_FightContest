@@ -45,6 +45,9 @@ public class DialogWindow_cutscene : MonoBehaviour
         {
             if (sta.Length > ++DialogCount) // 
             {
+                if(DialogCount > 0)
+                    StopAllCoroutines();
+
                 dialogText.text = "";
                 StartCoroutine(Typing(sta[DialogCount]));
             }
