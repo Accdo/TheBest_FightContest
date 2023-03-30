@@ -17,10 +17,10 @@ public class Scarecrow_Shake : MonoBehaviour
 
     // ==============================
 
-    public int HitCount; // Æ©Åä¸®¾ó Á¶°Ç
-    public GameObject dialogwindow; // ´ëÈ­Ã¢
+    public int HitCount; // Æ©ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //public GameObject dialogwindow; // ï¿½ï¿½È­Ã¢
 
-    public GameObject PlayerBomb; // ÇÃ·¹ÀÌ¾î ÀÌÆåÆ®
+    public GameObject PlayerBomb; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     
     void Start()
     {
@@ -31,7 +31,8 @@ public class Scarecrow_Shake : MonoBehaviour
     {
         if(HitCount >= 10)
         {
-            dialogwindow.SetActive(true);
+            //dialogwindow.SetActive(true);
+            TutorialManager.Instance.OpenDialogWindow();
         }
     }
 

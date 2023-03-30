@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Tutorial_Quest : MonoBehaviour
 {
-    public int Section = 1; // 1Àº Ã¹¹ø¤Š Äù, 2´Â µÎ¹øÂ° Äù, ÀÌ ÀÌ¿Ü¿£ Á¾·á
+    public int Section = 1; // 1ï¿½ï¿½ Ã¹ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, 2ï¿½ï¿½ ï¿½Î¹ï¿½Â° ï¿½ï¿½, ï¿½ï¿½ ï¿½Ì¿Ü¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    public GameObject dialogwindow; // ´ëÈ­Ã¢
+    public GameObject dialogwindow; // ï¿½ï¿½È­Ã¢
+
+    bool quest1 = false;
+    bool quest2 = false;
 
     void Start()
     {
@@ -17,18 +20,38 @@ public class Tutorial_Quest : MonoBehaviour
     {
         if(Section == 1)
         {
-            if (Input.GetKeyDown(KeyCode.O) && dialogwindow.activeSelf == false)
+            if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                dialogwindow.SetActive(true);
+                quest1 = true;
+            }
+            if(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                quest2 = true;
+            }
+            if (quest1 && quest2 && dialogwindow.activeSelf == false)
+            {
+                quest1 = false;
+                quest2 = false;
+
+                TutorialManager.Instance.OpenDialogWindow();
 
                 Section = 2;
             }
         }
         else if(Section == 2)
         {
-            if (Input.GetKeyDown(KeyCode.P) && dialogwindow.activeSelf == false)
+            if(Input.GetKeyDown(KeyCode.LeftShift))
             {
-                dialogwindow.SetActive(true);
+                quest1 = true;
+            }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                quest2 = true;
+            }
+            if (quest1 && quest2 && dialogwindow.activeSelf == false)
+            {
+                TutorialManager.Instance.OpenDialogWindow();
+                Section = 2;
             }
         }
         else
