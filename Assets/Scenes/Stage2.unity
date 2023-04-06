@@ -7209,8 +7209,8 @@ MonoBehaviour:
     \uC7A5\uC2E0\uAD6C\uC5D0\uC11C \uB098\uC624\uB294 \uAC70\uACA0\uC9C0"
   - "\uADF8\uB54C \uBABB \uBE8F\uC740 \uC7A5\uC2E0\uAD6C\uB97C \uC774\uBC88\uC5D0
     \uB0B4\uAC00 \uB2E4\uC2DC \uAC00\uC838\uAC00\uACA0\uB2E4."
-  next_text: 
-  Dialogplus: 1
+  next_text: "\uB364\uBCBC\uB77C!"
+  Dialogplus: 0
   CurrentDialogEnd: 0
   NextSceneNumber: 10
 --- !u!1 &8675049292808738772

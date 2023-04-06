@@ -22,6 +22,7 @@ public class Player_Controller : MonoBehaviour
     private Player_Sensor m_wallSensorR2;
     private Player_Sensor m_wallSensorL1;
     private Player_Sensor m_wallSensorL2;
+    private bool m_isWallSliding = false;
 
     [SerializeField] private bool m_grounded = true; // 땅에 있는가
     [SerializeField] private bool m_rolling = false; // 구르고 있는가
@@ -153,7 +154,7 @@ public class Player_Controller : MonoBehaviour
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         //Wall Slide
-        //m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
+        m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
 
         if(!can_Parring)
         {
@@ -303,7 +304,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && can_Rolling && !GetHit)
+        else if (Input.GetKeyDown("left shift") && !m_rolling && can_Rolling && !GetHit && !m_isWallSliding)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
@@ -498,8 +499,8 @@ public class Player_Controller : MonoBehaviour
 
             if (other.gameObject.CompareTag("WolfAttack"))
             {
-                m_hp -= 10.0f;
-                player_ui.GivePlayerHp(m_hp, -10.0f);
+                m_hp -= 3.0f;
+                player_ui.GivePlayerHp(m_hp, -3.0f);
                 if (!IsDie)
                     StartCoroutine(OnHeatTime());
                 GetHit = true;

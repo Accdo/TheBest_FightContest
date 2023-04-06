@@ -1633,14 +1633,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6583842408836293280, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6583842408836293280, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6583842408836293281, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1694,10 +1686,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6583842408836293287, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6583842408836293287, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
       propertyPath: player_ui
       value: 
       objectReference: {fileID: 799092744}
@@ -1709,14 +1697,6 @@ PrefabInstance:
       propertyPath: m_UltiSkill
       value: 
       objectReference: {fileID: 869624520}
-    - target: {fileID: 6583842408840037291, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
-      propertyPath: m_Size.x
-      value: 8.204424
-      objectReference: {fileID: 0}
-    - target: {fileID: 6583842408840037291, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
-      propertyPath: m_Offset.x
-      value: -1.5431896
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa80f6e2ea19cc645b4d4d1f4283cea9, type: 3}
 --- !u!4 &1906066185 stripped

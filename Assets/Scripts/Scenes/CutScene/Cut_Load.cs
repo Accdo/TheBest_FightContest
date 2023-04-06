@@ -13,6 +13,8 @@ public class Cut_Load : MonoBehaviour
 
     public int NextSceneNumber = 1;
 
+    bool LastCut = false;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -23,14 +25,17 @@ public class Cut_Load : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetMouseButtonDown(0) && !LastCut)
         {
             audioSource.Play();
 
             ++sprite_Num;
             
             if (sprite_Num > sprite.Length-1)
+            {
                 StartCoroutine(FadeInFadeOut.Instance.FadeOutStart(NextSceneNumber));
+                LastCut = true;
+            }
             else
                 spriteRenderer.sprite = sprite[sprite_Num];
         }
