@@ -47,6 +47,14 @@ public class MainScript : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("Stage1");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene("Stage2");
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UIManager.Instance.Window_On("Pause_Window_panel");

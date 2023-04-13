@@ -68,6 +68,8 @@ public class Player_Controller : MonoBehaviour
     bool Charge_Start = false;
     [SerializeField] float Charge_Timer = 0.0f;
 
+    bool UltiSkill_On = false; // 궁극기스킬 가능한지 (1스테이지, 2스테이지)
+
     void Start()
     {
         m_hp = 100;
@@ -176,6 +178,15 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
+        if (SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 10)
+        {
+            UltiSkill_On = true;
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 9)
+        {
+            UltiSkill_On = false;
+        }
+
         // 애니메이션 ============================================================================
 
         B_Skill_Timer += Time.deltaTime;
@@ -271,7 +282,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         // UltiSkill
-        else if (Input.GetKeyDown(KeyCode.V) && !m_rolling && can_Parring && !GetHit && m_mp > 0)
+        else if (Input.GetKeyDown(KeyCode.V) && !m_rolling && can_Parring && !GetHit && m_mp > 0 && UltiSkill_On)
         {
             if(state_Ulti) // 기본 배경, 궁극기 쓰기전
             {
