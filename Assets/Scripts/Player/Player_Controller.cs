@@ -156,7 +156,7 @@ public class Player_Controller : MonoBehaviour
         m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         //Wall Slide
-        //m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
+        m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
 
         if(!can_Parring)
         {
@@ -475,12 +475,12 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
-        if(!NoDamage && !GetHit)
+        if(!NoDamage)
         {
             if (other.gameObject.CompareTag("Boss1_Attack"))
             {
-                m_hp -= 10.0f;
-                player_ui.GivePlayerHp(m_hp, -10.0f);
+                m_hp -= 5.0f;
+                player_ui.GivePlayerHp(m_hp, -5.0f);
 
                 EffectManager.Instance.PlayEffect("eff_boss1_atkbomb", transform.position + new Vector3(0, -1, 0));
                 if (!IsDie)
@@ -510,8 +510,8 @@ public class Player_Controller : MonoBehaviour
 
             if (other.gameObject.CompareTag("WolfAttack"))
             {
-                m_hp -= 10.0f;
-                player_ui.GivePlayerHp(m_hp, -10.0f);
+                m_hp -= 3.0f;
+                player_ui.GivePlayerHp(m_hp, -3.0f);
                 if (!IsDie)
                     StartCoroutine(OnHeatTime());
                 GetHit = true;

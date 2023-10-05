@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 39365608}
   m_Layer: 0
   m_Name: object_stonesteps2
-  m_TagString: Stone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2330,8 +2330,8 @@ EdgeCollider2D:
   m_Points:
   - {x: 2.0340328, y: -1.6037793}
   - {x: -2.129209, y: -1.6030185}
-  - {x: -2.1293502, y: -0.7517104}
-  - {x: -1.3582766, y: -0.7516391}
+  - {x: -2.1263509, y: -0.7514503}
+  - {x: -1.3556294, y: -0.75255036}
   - {x: -1.3602839, y: -0.06650925}
   - {x: -0.50178623, y: -0.06733942}
   - {x: -0.50211143, y: 1.4612908}
@@ -8744,10 +8744,6 @@ PrefabInstance:
     - target: {fileID: 6748217165607709279, guid: 97d7dc01e4f20754197dce09a96073ce, type: 3}
       propertyPath: m_Name
       value: tile_Bridge
-      objectReference: {fileID: 0}
-    - target: {fileID: 6748217165607709279, guid: 97d7dc01e4f20754197dce09a96073ce, type: 3}
-      propertyPath: m_TagString
-      value: Stone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d7dc01e4f20754197dce09a96073ce, type: 3}
