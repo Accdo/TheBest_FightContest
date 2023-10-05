@@ -475,12 +475,12 @@ public class Player_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
-        if(!NoDamage)
+        if(!NoDamage && !GetHit)
         {
             if (other.gameObject.CompareTag("Boss1_Attack"))
             {
-                m_hp -= 5.0f;
-                player_ui.GivePlayerHp(m_hp, -5.0f);
+                m_hp -= 10.0f;
+                player_ui.GivePlayerHp(m_hp, -10.0f);
 
                 EffectManager.Instance.PlayEffect("eff_boss1_atkbomb", transform.position + new Vector3(0, -1, 0));
                 if (!IsDie)
@@ -510,8 +510,8 @@ public class Player_Controller : MonoBehaviour
 
             if (other.gameObject.CompareTag("WolfAttack"))
             {
-                m_hp -= 3.0f;
-                player_ui.GivePlayerHp(m_hp, -3.0f);
+                m_hp -= 10.0f;
+                player_ui.GivePlayerHp(m_hp, -10.0f);
                 if (!IsDie)
                     StartCoroutine(OnHeatTime());
                 GetHit = true;
