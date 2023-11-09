@@ -14,7 +14,7 @@ public class Boss2_AI : MonoBehaviour
     private SpriteRenderer m_spriterend;
 
     // ==========================================================
-
+    
     public Transform Traget_Player;
 
     float pattern_timer1;
@@ -45,10 +45,10 @@ public class Boss2_AI : MonoBehaviour
 
     bool Charge_Start = false;
     float Charge_Timer = 0.0f;
-
+    
     [SerializeField]
     int Pattern_State = 1; // 1 shield 2 UltiSkill
-
+    
     // ==========================================================
 
     public GameObject potal;
